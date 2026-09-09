@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { site } from "../lib/site";
-import { buildContactMessage, openWhatsApp, quickMessage, whatsappLink } from "../lib/whatsapp";
+import { quickMessage, whatsappLink } from "../lib/whatsapp";
+import { submitToNetlify } from "../lib/netlifyForms";
 
 export default function Contact() {
   const [values, setValues] = useState({
@@ -11,6 +12,7 @@ export default function Contact() {
     subject: "",
     message: "",
   });
+  const [status, setStatus] = useState("idle"); // idle | submitting | success | error
 
   const channels = [
     { icon: "bi-whatsapp", label: "WhatsApp", value: site.phoneDisplay, href: whatsappLink(quickMessage()), external: true, note: "Fastest way to reach us" },
@@ -22,10 +24,21 @@ export default function Contact() {
     setValues((v) => ({ ...v, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    const message = buildContactMessage(values);
-    openWhatsApp(whatsappLink(message));
+    setStatus("submitting");
+    try {
+      await submitToNetlify("contact", {
+        "full-name": values.fullName,
+        phone: values.phone,
+        email: values.email,
+        subject: values.subject,
+        message: values.message,
+      });
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
@@ -81,36 +94,50 @@ export default function Contact() {
         <div className="container">
           <div className="row g-4">
             <div className="col-lg-7">
-              <form onSubmit={handleSubmit} className="bg-white border border-line p-4 p-lg-5">
-                <h2 style={{ fontSize: "1.3rem" }}>Send us a message</h2>
-                <div className="rule-gold my-3"></div>
-                <div className="row g-3">
-                  <div className="col-md-6">
-                    <label className="field-label">Full Name *</label>
-                    <input required name="fullName" className="form-control" value={values.fullName} onChange={handleChange} />
-                  </div>
-                  <div className="col-md-6">
-                    <label className="field-label">WhatsApp Number *</label>
-                    <input required name="phone" className="form-control" value={values.phone} onChange={handleChange} />
-                  </div>
-                  <div className="col-md-6">
-                    <label className="field-label">Email</label>
-                    <input type="email" name="email" className="form-control" value={values.email} onChange={handleChange} />
-                  </div>
-                  <div className="col-md-6">
-                    <label className="field-label">Subject</label>
-                    <input name="subject" className="form-control" value={values.subject} onChange={handleChange} />
-                  </div>
-                  <div className="col-12">
-                    <label className="field-label">Message *</label>
-                    <textarea required name="message" rows="4" className="form-control" value={values.message} onChange={handleChange}></textarea>
-                  </div>
+              {status === "success" ? (
+                <div className="bg-white border border-line p-5 text-center">
+                  <i className="bi bi-check-circle text-gold-dark" style={{ fontSize: "2.5rem" }}></i>
+                  <h3 className="mt-3" style={{ fontSize: "1.2rem" }}>Message sent</h3>
+                  <p className="text-muted-custom mb-0">
+                    Thank you, {values.fullName || "there"}. We'll reply on {values.email || values.phone || "the details you provided"} shortly.
+                  </p>
                 </div>
-                <button type="submit" className="btn btn-whatsapp w-100 py-3 mt-4">
-                  <i className="bi bi-whatsapp me-2"></i>
-                  Send on WhatsApp
-                </button>
-              </form>
+              ) : (
+                <form onSubmit={handleSubmit} className="bg-white border border-line p-4 p-lg-5">
+                  <h2 style={{ fontSize: "1.3rem" }}>Send us a message</h2>
+                  <div className="rule-gold my-3"></div>
+                  <div className="row g-3">
+                    <div className="col-md-6">
+                      <label className="field-label">Full Name *</label>
+                      <input required name="fullName" className="form-control" value={values.fullName} onChange={handleChange} />
+                    </div>
+                    <div className="col-md-6">
+                      <label className="field-label">WhatsApp Number *</label>
+                      <input required name="phone" className="form-control" value={values.phone} onChange={handleChange} />
+                    </div>
+                    <div className="col-md-6">
+                      <label className="field-label">Email</label>
+                      <input type="email" name="email" className="form-control" value={values.email} onChange={handleChange} />
+                    </div>
+                    <div className="col-md-6">
+                      <label className="field-label">Subject</label>
+                      <input name="subject" className="form-control" value={values.subject} onChange={handleChange} />
+                    </div>
+                    <div className="col-12">
+                      <label className="field-label">Message *</label>
+                      <textarea required name="message" rows="4" className="form-control" value={values.message} onChange={handleChange}></textarea>
+                    </div>
+                  </div>
+                  {status === "error" && (
+                    <p className="text-danger small mt-3 mb-0">
+                      Something went wrong sending your message. Please try again.
+                    </p>
+                  )}
+                  <button type="submit" className="btn btn-navy w-100 py-3 mt-4" disabled={status === "submitting"}>
+                    {status === "submitting" ? "Sending..." : "Send Message"}
+                  </button>
+                </form>
+              )}
             </div>
 
             <div className="col-lg-5">

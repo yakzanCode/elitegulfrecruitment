@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import SectionHeading from "../components/SectionHeading.jsx";
 import { gulfCountries, site } from "../lib/site";
-import { buildEmployerMessage, openWhatsApp, quickMessage, whatsappLink } from "../lib/whatsapp";
+import { quickMessage, whatsappLink } from "../lib/whatsapp";
+import { submitToNetlify } from "../lib/netlifyForms";
 
 const sectors = [
   { title: "Hospitality & Catering", roles: "Chefs, cooks, bakers, waiters, baristas, housekeeping, stewards" },
@@ -40,15 +41,30 @@ export default function Employers() {
     workers: "",
     message: "",
   });
+  const [status, setStatus] = useState("idle"); // idle | submitting | success | error
 
   function handleChange(e) {
     setValues((v) => ({ ...v, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    const message = buildEmployerMessage(values);
-    openWhatsApp(whatsappLink(message));
+    setStatus("submitting");
+    try {
+      await submitToNetlify("employer-request", {
+        "company-name": values.companyName,
+        "contact-person": values.contactPerson,
+        phone: values.phone,
+        email: values.email,
+        country: values.country,
+        position: values.position,
+        workers: values.workers,
+        message: values.message,
+      });
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
@@ -172,51 +188,65 @@ export default function Employers() {
               title="Send us your manpower requirement"
               description="Complete the form and WhatsApp opens with your request already written. Our recruitment desk normally replies the same working day."
             />
-            <form onSubmit={handleSubmit} className="mt-4 bg-white border border-line p-4 p-lg-5">
-              <div className="row g-3">
-                <div className="col-md-6">
-                  <label className="field-label">Company Name *</label>
-                  <input required name="companyName" className="form-control" value={values.companyName} onChange={handleChange} />
-                </div>
-                <div className="col-md-6">
-                  <label className="field-label">Contact Person *</label>
-                  <input required name="contactPerson" className="form-control" value={values.contactPerson} onChange={handleChange} />
-                </div>
-                <div className="col-md-6">
-                  <label className="field-label">WhatsApp Number *</label>
-                  <input required name="phone" className="form-control" value={values.phone} onChange={handleChange} />
-                </div>
-                <div className="col-md-6">
-                  <label className="field-label">Email</label>
-                  <input type="email" name="email" className="form-control" value={values.email} onChange={handleChange} />
-                </div>
-                <div className="col-md-6">
-                  <label className="field-label">Country *</label>
-                  <select required name="country" className="form-select" value={values.country} onChange={handleChange}>
-                    <option value="">Select country</option>
-                    {gulfCountries.map((c) => (
-                      <option key={c.code} value={c.name}>{c.name}</option>
-                    ))}
-                  </select>
-                </div>
-                <div className="col-md-6">
-                  <label className="field-label">Number of Workers</label>
-                  <input name="workers" className="form-control" value={values.workers} onChange={handleChange} />
-                </div>
-                <div className="col-12">
-                  <label className="field-label">Position Needed *</label>
-                  <input required name="position" className="form-control" value={values.position} onChange={handleChange} />
-                </div>
-                <div className="col-12">
-                  <label className="field-label">Message</label>
-                  <textarea name="message" rows="4" className="form-control" value={values.message} onChange={handleChange}></textarea>
-                </div>
+            {status === "success" ? (
+              <div className="mt-4 bg-white border border-line p-5 text-center">
+                <i className="bi bi-check-circle text-gold-dark" style={{ fontSize: "2.5rem" }}></i>
+                <h3 className="mt-3" style={{ fontSize: "1.2rem" }}>Request received</h3>
+                <p className="text-muted-custom mb-0">
+                  Thank you, {values.contactPerson || "there"}. Our recruitment desk will review your requirement and get back to you on {values.phone || "the number you provided"}.
+                </p>
               </div>
-              <button type="submit" className="btn btn-whatsapp w-100 py-3 mt-4">
-                <i className="bi bi-whatsapp me-2"></i>
-                Send request on WhatsApp
-              </button>
-            </form>
+            ) : (
+              <form onSubmit={handleSubmit} className="mt-4 bg-white border border-line p-4 p-lg-5">
+                <div className="row g-3">
+                  <div className="col-md-6">
+                    <label className="field-label">Company Name *</label>
+                    <input required name="companyName" className="form-control" value={values.companyName} onChange={handleChange} />
+                  </div>
+                  <div className="col-md-6">
+                    <label className="field-label">Contact Person *</label>
+                    <input required name="contactPerson" className="form-control" value={values.contactPerson} onChange={handleChange} />
+                  </div>
+                  <div className="col-md-6">
+                    <label className="field-label">WhatsApp Number *</label>
+                    <input required name="phone" className="form-control" value={values.phone} onChange={handleChange} />
+                  </div>
+                  <div className="col-md-6">
+                    <label className="field-label">Email</label>
+                    <input type="email" name="email" className="form-control" value={values.email} onChange={handleChange} />
+                  </div>
+                  <div className="col-md-6">
+                    <label className="field-label">Country *</label>
+                    <select required name="country" className="form-select" value={values.country} onChange={handleChange}>
+                      <option value="">Select country</option>
+                      {gulfCountries.map((c) => (
+                        <option key={c.code} value={c.name}>{c.name}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="col-md-6">
+                    <label className="field-label">Number of Workers</label>
+                    <input name="workers" className="form-control" value={values.workers} onChange={handleChange} />
+                  </div>
+                  <div className="col-12">
+                    <label className="field-label">Position Needed *</label>
+                    <input required name="position" className="form-control" value={values.position} onChange={handleChange} />
+                  </div>
+                  <div className="col-12">
+                    <label className="field-label">Message</label>
+                    <textarea name="message" rows="4" className="form-control" value={values.message} onChange={handleChange}></textarea>
+                  </div>
+                </div>
+                {status === "error" && (
+                  <p className="text-danger small mt-3 mb-0">
+                    Something went wrong sending your request. Please try again.
+                  </p>
+                )}
+                <button type="submit" className="btn btn-navy w-100 py-3 mt-4" disabled={status === "submitting"}>
+                  {status === "submitting" ? "Sending..." : "Send Request"}
+                </button>
+              </form>
+            )}
 
             <div className="mt-4 border border-line bg-white p-4 text-center">
               <p className="text-muted-custom mb-3">

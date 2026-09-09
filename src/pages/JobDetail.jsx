@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { getJobBySlug, getRelatedJobs } from "../lib/jobs";
-import { buildApplicationMessage, openWhatsApp, whatsappLink } from "../lib/whatsapp";
+import { submitToNetlify } from "../lib/netlifyForms";
 import JobCard from "../components/JobCard.jsx";
 
 const DETAIL_ROWS = [
@@ -27,6 +27,7 @@ export default function JobDetail() {
     location: "",
     message: "",
   });
+  const [status, setStatus] = useState("idle"); // idle | submitting | success | error
 
   if (!job) {
     return <Navigate to="/jobs" replace />;
@@ -38,10 +39,27 @@ export default function JobDetail() {
     setValues((v) => ({ ...v, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    const message = buildApplicationMessage(job, values);
-    openWhatsApp(whatsappLink(message));
+    setStatus("submitting");
+    try {
+      await submitToNetlify("job-application", {
+        "job-title": job.title,
+        "job-country": job.country,
+        "job-city": job.city,
+        "full-name": values.fullName,
+        phone: values.phone,
+        email: values.email,
+        nationality: values.nationality,
+        age: values.age,
+        experience: values.experience,
+        location: values.location,
+        message: values.message,
+      });
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
@@ -131,46 +149,61 @@ export default function JobDetail() {
               <div className="border border-line bg-sand p-4 p-lg-5" style={{ position: "sticky", top: 96 }}>
                 <h2 style={{ fontSize: "1.3rem" }}>Apply for this job</h2>
                 <p className="text-muted-custom small mb-4">
-                  Fill this in and WhatsApp opens with your application already written.
+                  Fill this in and our recruitment desk will review your application.
                 </p>
-                <form onSubmit={handleSubmit}>
-                  <div className="mb-3">
-                    <label className="field-label">Full Name *</label>
-                    <input required name="fullName" className="form-control" value={values.fullName} onChange={handleChange} />
+
+                {status === "success" ? (
+                  <div className="text-center py-4">
+                    <i className="bi bi-check-circle text-gold-dark" style={{ fontSize: "2.5rem" }}></i>
+                    <h3 className="mt-3" style={{ fontSize: "1.1rem" }}>Application received</h3>
+                    <p className="text-muted-custom small mb-0">
+                      Thank you, {values.fullName || "there"}. We'll be in touch on {values.phone || "the number you provided"} if your profile matches this role.
+                    </p>
                   </div>
-                  <div className="mb-3">
-                    <label className="field-label">WhatsApp Number *</label>
-                    <input required name="phone" className="form-control" value={values.phone} onChange={handleChange} />
-                  </div>
-                  <div className="mb-3">
-                    <label className="field-label">Email</label>
-                    <input type="email" name="email" className="form-control" value={values.email} onChange={handleChange} />
-                  </div>
-                  <div className="mb-3">
-                    <label className="field-label">Nationality *</label>
-                    <input required name="nationality" className="form-control" value={values.nationality} onChange={handleChange} />
-                  </div>
-                  <div className="mb-3">
-                    <label className="field-label">Age</label>
-                    <input name="age" className="form-control" value={values.age} onChange={handleChange} />
-                  </div>
-                  <div className="mb-3">
-                    <label className="field-label">Relevant Experience *</label>
-                    <input required name="experience" className="form-control" value={values.experience} onChange={handleChange} />
-                  </div>
-                  <div className="mb-3">
-                    <label className="field-label">Current Location</label>
-                    <input name="location" className="form-control" value={values.location} onChange={handleChange} />
-                  </div>
-                  <div className="mb-4">
-                    <label className="field-label">Message</label>
-                    <textarea name="message" rows="3" className="form-control" value={values.message} onChange={handleChange}></textarea>
-                  </div>
-                  <button type="submit" className="btn btn-whatsapp w-100 py-3">
-                    <i className="bi bi-whatsapp me-2"></i>
-                    Apply on WhatsApp
-                  </button>
-                </form>
+                ) : (
+                  <form onSubmit={handleSubmit}>
+                    <div className="mb-3">
+                      <label className="field-label">Full Name *</label>
+                      <input required name="fullName" className="form-control" value={values.fullName} onChange={handleChange} />
+                    </div>
+                    <div className="mb-3">
+                      <label className="field-label">WhatsApp Number *</label>
+                      <input required name="phone" className="form-control" value={values.phone} onChange={handleChange} />
+                    </div>
+                    <div className="mb-3">
+                      <label className="field-label">Email</label>
+                      <input type="email" name="email" className="form-control" value={values.email} onChange={handleChange} />
+                    </div>
+                    <div className="mb-3">
+                      <label className="field-label">Nationality *</label>
+                      <input required name="nationality" className="form-control" value={values.nationality} onChange={handleChange} />
+                    </div>
+                    <div className="mb-3">
+                      <label className="field-label">Age</label>
+                      <input name="age" className="form-control" value={values.age} onChange={handleChange} />
+                    </div>
+                    <div className="mb-3">
+                      <label className="field-label">Relevant Experience *</label>
+                      <input required name="experience" className="form-control" value={values.experience} onChange={handleChange} />
+                    </div>
+                    <div className="mb-3">
+                      <label className="field-label">Current Location</label>
+                      <input name="location" className="form-control" value={values.location} onChange={handleChange} />
+                    </div>
+                    <div className="mb-4">
+                      <label className="field-label">Message</label>
+                      <textarea name="message" rows="3" className="form-control" value={values.message} onChange={handleChange}></textarea>
+                    </div>
+                    {status === "error" && (
+                      <p className="text-danger small mb-3">
+                        Something went wrong sending your application. Please try again.
+                      </p>
+                    )}
+                    <button type="submit" className="btn btn-navy w-100 py-3" disabled={status === "submitting"}>
+                      {status === "submitting" ? "Sending..." : "Submit Application"}
+                    </button>
+                  </form>
+                )}
               </div>
             </div>
           </div>
