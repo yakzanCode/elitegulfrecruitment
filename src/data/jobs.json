@@ -1,0 +1,331 @@
+[
+  {
+    "id": "1",
+    "slug": "pastry-chef-makkah-saudi-arabia",
+    "title": "Pastry Chef / Bakery Chef",
+    "titleAr": "شيف حلويات / شيف مخبوزات",
+    "country": "Saudi Arabia",
+    "city": "Makkah",
+    "category": "Hospitality & Catering",
+    "vacancies": 6,
+    "salaryMin": 4000,
+    "salaryMax": 5000,
+    "currency": "SAR",
+    "experience": "3+ years as a pastry or bakery chef in a hotel, restaurant or production bakery",
+    "workingHours": "8 hours per day, 6 days per week (1 day off), overtime paid separately",
+    "accommodation": "Provided free of charge by the employer (shared furnished accommodation)",
+    "transportation": "Provided free of charge by the employer (company transport to and from work)",
+    "medicalInsurance": "Full medical insurance provided by the employer",
+    "contractDuration": "2 years, renewable",
+    "benefits": [
+      "Return air ticket provided by the employer",
+      "30 days paid annual leave after completing the contract year",
+      "Residency permit (Iqama) and work visa paid by the employer",
+      "End of service benefits as per Saudi Labour Law",
+      "Free duty meals during working hours"
+    ],
+    "description": [
+      "A well-established bakery and sweets group in Makkah, Saudi Arabia is hiring experienced Pastry and Bakery Chefs to join its production team.",
+      "The selected candidates will be responsible for preparing Arabic and international pastries, cakes and daily bakery items, following the company recipes and quality standards.",
+      "This is a direct hire position with a full legal work contract, sponsored visa, free accommodation and free transportation."
+    ],
+    "requirements": [
+      "Minimum 3 years of proven experience in pastry or bakery production",
+      "Able to prepare cakes, croissants, Arabic sweets and daily bread items",
+      "Good knowledge of food hygiene and kitchen safety standards",
+      "Physically fit and able to work in a fast-paced production kitchen",
+      "Valid passport with at least 18 months validity",
+      "Age between 22 and 45 years"
+    ],
+    "postedAt": "2026-08-28",
+    "validThrough": "2026-12-31",
+    "featured": true
+  },
+  {
+    "id": "2",
+    "title": "Female Housekeeping Attendant",
+    "titleAr": "عاملة تدبير منزلي - فنادق",
+    "country": "United Arab Emirates",
+    "city": "Dubai",
+    "category": "Hospitality & Catering",
+    "vacancies": 20,
+    "salaryMin": 1500,
+    "salaryMax": 1800,
+    "currency": "AED",
+    "experience": "1+ year in hotel or facility housekeeping (hotel experience preferred)",
+    "workingHours": "8 hours per day, 6 days per week, rotating shifts",
+    "accommodation": "Provided free of charge by the employer (staff accommodation)",
+    "transportation": "Provided free of charge by the employer",
+    "medicalInsurance": "Full medical insurance provided by the employer",
+    "contractDuration": "2 years, renewable",
+    "benefits": [
+      "Return air ticket every 2 years",
+      "30 days paid annual leave",
+      "Uniform and laundry provided",
+      "Overtime paid as per UAE Labour Law",
+      "Free duty meals"
+    ],
+    "description": [
+      "A leading hospitality group in Dubai is recruiting Female Housekeeping Attendants for its 4 and 5 star properties.",
+      "The role covers guest room cleaning, linen handling, public area cleaning and reporting maintenance issues to the supervisor.",
+      "Full visa sponsorship, accommodation, transport and medical insurance are provided by the employer."
+    ],
+    "requirements": [
+      "Minimum 1 year of housekeeping experience, hotel background preferred",
+      "Basic English communication skills",
+      "Presentable, disciplined and customer oriented",
+      "Able to work rotating shifts including weekends",
+      "Valid passport with at least 18 months validity",
+      "Age between 21 and 40 years"
+    ],
+    "postedAt": "2026-08-26",
+    "validThrough": "2026-12-31",
+    "featured": true
+  },
+  {
+    "id": "3",
+    "title": "Heavy Duty Driver",
+    "titleAr": "سائق شاحنة ثقيلة",
+    "country": "Qatar",
+    "city": "Doha",
+    "category": "Transport & Logistics",
+    "vacancies": 12,
+    "salaryMin": 2200,
+    "salaryMax": 2800,
+    "currency": "QAR",
+    "experience": "3+ years driving heavy vehicles, GCC driving experience is an advantage",
+    "workingHours": "8 hours per day, 6 days per week, overtime available and paid",
+    "accommodation": "Provided free of charge by the employer",
+    "transportation": "Provided free of charge by the employer",
+    "medicalInsurance": "Full medical insurance provided by the employer",
+    "contractDuration": "2 years, renewable",
+    "benefits": [
+      "Return air ticket provided by the employer",
+      "Qatar driving licence conversion sponsored by the employer",
+      "21 days paid annual leave",
+      "Overtime and food allowance",
+      "End of service gratuity as per Qatar Labour Law"
+    ],
+    "description": [
+      "A large contracting and logistics company in Doha, Qatar is hiring Heavy Duty Drivers for site and inter-city transport operations.",
+      "Drivers will operate trailers, tippers and heavy trucks, complete daily vehicle checks and deliver materials safely between sites.",
+      "The employer sponsors the Qatari heavy licence conversion after arrival."
+    ],
+    "requirements": [
+      "Valid heavy vehicle driving licence in home country",
+      "Minimum 3 years of professional heavy driving experience",
+      "Clean driving record and good knowledge of road safety",
+      "Basic English or Arabic communication",
+      "Medically fit, able to pass the GCC medical examination",
+      "Age between 25 and 45 years"
+    ],
+    "postedAt": "2026-08-24",
+    "validThrough": "2026-12-31",
+    "featured": true
+  },
+  {
+    "id": "4",
+    "title": "MIG / TIG Welder",
+    "titleAr": "لحام - ميغ / تيغ",
+    "country": "Saudi Arabia",
+    "city": "Jubail",
+    "category": "Construction & Industrial",
+    "vacancies": 25,
+    "salaryMin": 2500,
+    "salaryMax": 3500,
+    "currency": "SAR",
+    "experience": "4+ years in structural or pipe welding with a valid welding certificate",
+    "workingHours": "10 hours per day, 6 days per week (2 hours paid overtime included)",
+    "accommodation": "Provided free of charge by the employer (camp accommodation)",
+    "transportation": "Provided free of charge by the employer",
+    "medicalInsurance": "Full medical insurance provided by the employer",
+    "contractDuration": "2 years, renewable",
+    "benefits": [
+      "Return air ticket provided by the employer",
+      "Food allowance paid monthly",
+      "Iqama and work permit fully sponsored",
+      "Trade test allowance for successful candidates",
+      "End of service benefits as per Saudi Labour Law"
+    ],
+    "description": [
+      "A major industrial contractor in Jubail Industrial City is recruiting certified MIG and TIG Welders for refinery and petrochemical projects.",
+      "Selected welders will work on carbon steel and stainless steel piping and structures under the supervision of the QC department.",
+      "Candidates must pass a practical trade test before mobilisation."
+    ],
+    "requirements": [
+      "Minimum 4 years of welding experience on industrial projects",
+      "Valid welder certificate (6G test certificate is a strong advantage)",
+      "Able to read basic isometric drawings and welding symbols",
+      "Committed to strict site safety procedures",
+      "Valid passport with at least 18 months validity",
+      "Age between 23 and 45 years"
+    ],
+    "postedAt": "2026-08-20",
+    "validThrough": "2026-12-31",
+    "featured": false
+  },
+  {
+    "id": "5",
+    "title": "Restaurant Waiter / Waitress",
+    "titleAr": "نادل / نادلة مطعم",
+    "country": "Kuwait",
+    "city": "Kuwait City",
+    "category": "Hospitality & Catering",
+    "vacancies": 15,
+    "salaryMin": 130,
+    "salaryMax": 170,
+    "currency": "KWD",
+    "experience": "2+ years in restaurant or cafe service",
+    "workingHours": "9 hours per day, 6 days per week, split shifts",
+    "accommodation": "Provided free of charge by the employer",
+    "transportation": "Provided free of charge by the employer",
+    "medicalInsurance": "Full medical insurance provided by the employer",
+    "contractDuration": "2 years, renewable",
+    "benefits": [
+      "Return air ticket provided by the employer",
+      "Service charge and tips shared monthly",
+      "30 days paid annual leave",
+      "Uniform provided",
+      "Free duty meals"
+    ],
+    "description": [
+      "A growing restaurant group in Kuwait City is hiring Waiters and Waitresses for its casual dining and fine dining outlets.",
+      "The role covers greeting guests, taking orders on the POS system, serving food and beverages, and maintaining the service area.",
+      "Full visa sponsorship, accommodation and transport are provided by the employer."
+    ],
+    "requirements": [
+      "Minimum 2 years of restaurant service experience",
+      "Good spoken English, Arabic or French is an advantage",
+      "Well presented with a strong customer service attitude",
+      "Able to work split shifts and weekends",
+      "Valid passport with at least 18 months validity",
+      "Age between 21 and 38 years"
+    ],
+    "postedAt": "2026-08-18",
+    "validThrough": "2026-12-31",
+    "featured": false
+  },
+  {
+    "id": "6",
+    "title": "Electrician - Building Maintenance",
+    "titleAr": "كهربائي صيانة مباني",
+    "country": "United Arab Emirates",
+    "city": "Abu Dhabi",
+    "category": "Construction & Industrial",
+    "vacancies": 10,
+    "salaryMin": 1800,
+    "salaryMax": 2400,
+    "currency": "AED",
+    "experience": "3+ years in building or facility maintenance electrical works",
+    "workingHours": "9 hours per day, 6 days per week, overtime paid",
+    "accommodation": "Provided free of charge by the employer",
+    "transportation": "Provided free of charge by the employer",
+    "medicalInsurance": "Full medical insurance provided by the employer",
+    "contractDuration": "2 years, renewable",
+    "benefits": [
+      "Return air ticket every 2 years",
+      "Overtime paid as per UAE Labour Law",
+      "30 days paid annual leave",
+      "Tools and PPE provided by the employer",
+      "End of service gratuity"
+    ],
+    "description": [
+      "A facility management company in Abu Dhabi is recruiting Maintenance Electricians for residential towers and commercial buildings.",
+      "Work includes preventive and corrective maintenance of distribution boards, lighting circuits, pumps and small power systems.",
+      "The employer provides visa, accommodation, transport and medical insurance."
+    ],
+    "requirements": [
+      "Diploma or vocational certificate in electrical works",
+      "Minimum 3 years of maintenance experience in buildings or facilities",
+      "Able to read single line diagrams and use test instruments",
+      "Basic English communication",
+      "Valid passport with at least 18 months validity",
+      "Age between 24 and 45 years"
+    ],
+    "postedAt": "2026-08-15",
+    "validThrough": "2026-12-31",
+    "featured": false
+  },
+  {
+    "id": "7",
+    "title": "Female Sales Assistant - Retail",
+    "titleAr": "مندوبة مبيعات - تجزئة",
+    "country": "Bahrain",
+    "city": "Manama",
+    "category": "Retail & Sales",
+    "vacancies": 8,
+    "salaryMin": 180,
+    "salaryMax": 230,
+    "currency": "BHD",
+    "experience": "1+ year in retail, fashion or cosmetics sales",
+    "workingHours": "8 hours per day, 6 days per week, mall shift timings",
+    "accommodation": "Provided free of charge by the employer",
+    "transportation": "Provided free of charge by the employer",
+    "medicalInsurance": "Full medical insurance provided by the employer",
+    "contractDuration": "2 years, renewable",
+    "benefits": [
+      "Return air ticket provided by the employer",
+      "Monthly sales incentive on top of the basic salary",
+      "30 days paid annual leave",
+      "Uniform provided",
+      "Staff discount on company products"
+    ],
+    "description": [
+      "A retail group operating fashion and cosmetics stores in Bahrain is hiring Female Sales Assistants for its mall locations.",
+      "The role covers customer service, product presentation, cashiering and daily stock replenishment.",
+      "Visa, accommodation, transport and medical insurance are provided by the employer."
+    ],
+    "requirements": [
+      "Minimum 1 year of retail sales experience",
+      "Good spoken English, French or Arabic is an advantage",
+      "Presentable and confident with customers",
+      "Able to work mall shift hours including weekends",
+      "Valid passport with at least 18 months validity",
+      "Age between 20 and 35 years"
+    ],
+    "postedAt": "2026-08-12",
+    "validThrough": "2026-12-31",
+    "featured": false
+  },
+  {
+    "id": "8",
+    "title": "Cleaning Supervisor",
+    "titleAr": "مشرف نظافة",
+    "country": "Oman",
+    "city": "Muscat",
+    "category": "Facilities & Cleaning",
+    "vacancies": 5,
+    "salaryMin": 220,
+    "salaryMax": 280,
+    "currency": "OMR",
+    "experience": "3+ years in cleaning operations with at least 1 year as a supervisor",
+    "workingHours": "9 hours per day, 6 days per week",
+    "accommodation": "Provided free of charge by the employer",
+    "transportation": "Provided free of charge by the employer",
+    "medicalInsurance": "Full medical insurance provided by the employer",
+    "contractDuration": "2 years, renewable",
+    "benefits": [
+      "Return air ticket provided by the employer",
+      "Mobile allowance",
+      "30 days paid annual leave",
+      "Uniform and PPE provided",
+      "End of service benefits as per Oman Labour Law"
+    ],
+    "description": [
+      "A national facilities management company in Muscat is hiring Cleaning Supervisors to lead cleaning teams on commercial and government sites.",
+      "Responsibilities include staff scheduling, quality inspections, consumable stock control and client reporting.",
+      "Full visa sponsorship, accommodation and transport are provided."
+    ],
+    "requirements": [
+      "Minimum 3 years of cleaning operations experience, 1 year supervisory",
+      "Able to manage a team of 10 to 25 cleaners",
+      "Good English reading and writing for daily reports",
+      "Knowledge of cleaning chemicals and safety data sheets",
+      "Valid passport with at least 18 months validity",
+      "Age between 26 and 45 years"
+    ],
+    "postedAt": "2026-08-10",
+    "validThrough": "2026-12-31",
+    "featured": false
+  }
+]
