@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Elite Gulf Recruitment - Job Listings Editor</title>
+<style>
+  :root {
+    --navy: #071a2b;
+    --navy-soft: #0d2a42;
+    --gold: #c8a24a;
+    --gold-dark: #a8862f;
+    --gold-tint: #f6f1e4;
+    --line: #e2e5ea;
+    --muted: #5b6672;
+    --sand: #faf9f6;
+    --danger: #b3261e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Segoe UI", Inter, Roboto, sans-serif;
+    background: var(--sand);
+    color: #1b2733;
+  }
+  header {
+    background: var(--navy);
+    color: #fff;
+    padding: 20px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    justify-content: space-between;
+    border-bottom: 3px solid var(--gold);
+  }
+  header h1 {
+    font-size: 1.15rem;
+    margin: 0;
+    font-weight: 700;
+  }
+  header p {
+    margin: 2px 0 0;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.6);
+  }
+  .toolbar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  button, .file-btn {
+    font: inherit;
+    cursor: pointer;
+    border: 1px solid transparent;
+    padding: 9px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 3px;
+  }
+  .btn-gold { background: var(--gold); color: var(--navy); }
+  .btn-gold:hover { background: var(--gold-dark); color: #fff; }
+  .btn-outline { background: transparent; border-color: rgba(255,255,255,0.35); color: #fff; }
+  .btn-outline:hover { background: rgba(255,255,255,0.1); }
+  .btn-danger { background: #fff; border-color: var(--danger); color: var(--danger); }
+  .btn-danger:hover { background: var(--danger); color: #fff; }
+  .btn-small { padding: 5px 10px; font-size: 0.75rem; }
+  input[type=file] { display: none; }
+
+  main { max-width: 1000px; margin: 0 auto; padding: 24px; }
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--muted);
+    border: 1px dashed var(--line);
+    background: #fff;
+  }
+  .job-count {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.8rem;
+  }
+
+  .job-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    margin-bottom: 14px;
+  }
+  .job-card summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 16px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  .job-card summary::-webkit-details-marker { display: none; }
+  .job-summary-main { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .job-summary-title { font-weight: 700; color: var(--navy); }
+  .job-summary-sub { font-size: 0.8rem; color: var(--muted); }
+  .job-summary-actions { display: flex; gap: 8px; flex-shrink: 0; }
+  .badge {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 3px 8px;
+    background: var(--gold-tint);
+    color: var(--gold-dark);
+    border: 1px solid var(--gold);
+    margin-inline-start: 8px;
+  }
+
+  .job-form { padding: 0 18px 22px; border-top: 1px solid var(--line); }
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 16px;
+  }
+  .field-row.triple { grid-template-columns: 1fr 1fr 1fr 1fr; }
+  @media (max-width: 700px) {
+    .field-row, .field-row.triple { grid-template-columns: 1fr; }
+  }
+  .field label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--navy);
+    margin-bottom: 5px;
+  }
+  .field label.ar-label { direction: rtl; text-align: right; }
+  .field input, .field select, .field textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--line);
+    font: inherit;
+    font-size: 0.88rem;
+    border-radius: 2px;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(200,162,74,0.18);
+  }
+  .field textarea[dir="rtl"], .field input[dir="rtl"] { text-align: right; }
+  .field textarea { resize: vertical; min-height: 70px; font-family: inherit; }
+  .hint { font-size: 0.72rem; color: var(--muted); margin-top: 4px; }
+
+  .section-title {
+    margin-top: 26px;
+    margin-bottom: 4px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--navy);
+    border-bottom: 2px solid var(--gold);
+    display: inline-block;
+    padding-bottom: 4px;
+  }
+
+  .checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .checkbox-row input { width: auto; }
+  .checkbox-row label { margin: 0; font-size: 0.85rem; font-weight: 600; color: var(--navy); text-transform: none; }
+
+  .card-footer {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  #toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--navy);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 3px;
+    border-left: 3px solid var(--gold);
+    font-size: 0.85rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 50;
+  }
+  #toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Job Listings Editor</h1>
+    <p>Edit job postings locally, then download the updated jobs.json</p>
+  </div>
+  <div class="toolbar">
+    <span class="job-count" id="jobCount">0 jobs loaded</span>
+    <label class="file-btn btn-outline" for="loadInput">Load jobs.json</label>
+    <input type="file" id="loadInput" accept="application/json" />
+    <button class="btn-outline" id="addJobBtn">+ Add Job</button>
+    <button class="btn-gold" id="downloadBtn">Download jobs.json</button>
+  </div>
+</header>
+
+<main>
+  <div id="jobList"></div>
+  <div class="empty-state" id="emptyState">
+    No jobs loaded yet.<br />
+    Click <strong>Load jobs.json</strong> to open the current file, or <strong>+ Add Job</strong> to start fresh.
+  </div>
+</main>
+
+<div id="toast"></div>
+
+<script>
+  let jobs = [];
+  let nextTempId = 1;
+
+  const jobListEl = document.getElementById("jobList");
+  const emptyStateEl = document.getElementById("emptyState");
+  const jobCountEl = document.getElementById("jobCount");
+
+  const FIELDS = [
+    { key: "title", label: "Title", type: "text" },
+    { key: "titleAr", label: "Title", ar: true, type: "text" },
+    { key: "country", label: "Country", type: "text" },
+    { key: "countryAr", label: "Country", ar: true, type: "text" },
+    { key: "city", label: "City", type: "text" },
+    { key: "cityAr", label: "City", ar: true, type: "text" },
+    { key: "category", label: "Category", type: "text" },
+    { key: "categoryAr", label: "Category", ar: true, type: "text" },
+  ];
+
+  const DETAIL_FIELDS = [
+    { key: "experience", label: "Experience Required" },
+    { key: "workingHours", label: "Working Hours" },
+    { key: "accommodation", label: "Accommodation" },
+    { key: "transportation", label: "Transportation" },
+    { key: "medicalInsurance", label: "Medical Insurance" },
+    { key: "contractDuration", label: "Contract Duration" },
+  ];
+
+  const LIST_FIELDS = [
+    { key: "description", label: "Description" },
+    { key: "requirements", label: "Requirements" },
+    { key: "benefits", label: "Benefits" },
+  ];
+
+  function toast(msg) {
+    const el = document.getElementById("toast");
+    el.textContent = msg;
+    el.classList.add("show");
+    setTimeout(() => el.classList.remove("show"), 2200);
+  }
+
+  function el(tag, attrs = {}, children = []) {
+    const node = document.createElement(tag);
+    Object.entries(attrs).forEach(([k, v]) => {
+      if (k === "text") node.textContent = v;
+      else if (k === "html") node.innerHTML = v;
+      else node.setAttribute(k, v);
+    });
+    children.forEach((c) => c && node.appendChild(c));
+    return node;
+  }
+
+  function field(labelText, inputEl, opts = {}) {
+    const wrap = el("div", { class: "field" });
+    const label = el("label", { text: labelText });
+    if (opts.ar) label.classList.add("ar-label");
+    wrap.appendChild(label);
+    wrap.appendChild(inputEl);
+    if (opts.hint) wrap.appendChild(el("div", { class: "hint", text: opts.hint }));
+    return wrap;
+  }
+
+  function textInput(job, key, dir) {
+    const input = el("input", { type: "text", value: job[key] || "" });
+    if (dir) input.setAttribute("dir", dir);
+    input.addEventListener("input", () => { job[key] = input.value; });
+    return input;
+  }
+
+  function textarea(job, key, dir, placeholder) {
+    const ta = el("textarea", { placeholder: placeholder || "" });
+    ta.value = (job[key] || []).join("\n");
+    if (dir) ta.setAttribute("dir", dir);
+    ta.addEventListener("input", () => {
+      job[key] = ta.value.split("\n").map((s) => s.trim()).filter(Boolean);
+    });
+    return ta;
+  }
+
+  function renderJobCard(job, index) {
+    const card = el("details", { class: "job-card" });
+    if (job._open) card.setAttribute("open", "");
+
+    const summary = el("summary");
+    const main = el("div", { class: "job-summary-main" });
+    const titleLine = el("div", { class: "job-summary-title" });
+    titleLine.textContent = job.title || "(untitled job)";
+    if (job.featured) titleLine.appendChild(el("span", { class: "badge", text: "Featured" }));
+    const subLine = el("div", { class: "job-summary-sub" });
+    subLine.textContent = [job.city, job.country].filter(Boolean).join(", ") || "No location set";
+    main.appendChild(titleLine);
+    main.appendChild(subLine);
+
+    const actions = el("div", { class: "job-summary-actions" });
+    const dupBtn = el("button", { class: "btn-outline btn-small", type: "button", text: "Duplicate" });
+    dupBtn.style.color = "var(--navy)";
+    dupBtn.style.borderColor = "var(--line)";
+    dupBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const copy = JSON.parse(JSON.stringify(job));
+      copy.id = "temp-" + nextTempId++;
+      copy.slug = "";
+      copy.title = (copy.title || "") + " (copy)";
+      copy._open = true;
+      jobs.splice(index + 1, 0, copy);
+      render();
+    });
+    const delBtn = el("button", { class: "btn-danger btn-small", type: "button", text: "Delete" });
+    delBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (confirm("Delete \"" + (job.title || "this job") + "\"? This cannot be undone.")) {
+        jobs.splice(index, 1);
+        render();
+      }
+    });
+    actions.appendChild(dupBtn);
+    actions.appendChild(delBtn);
+
+    summary.appendChild(main);
+    summary.appendChild(actions);
+    card.appendChild(summary);
+
+    const form = el("div", { class: "job-form" });
+
+    // Core bilingual fields, paired EN/AR
+    const pairs = [["title", "titleAr", "Title"], ["country", "countryAr", "Country"], ["city", "cityAr", "City"], ["category", "categoryAr", "Category"]];
+    pairs.forEach(([enKey, arKey, label]) => {
+      const row = el("div", { class: "field-row" });
+      row.appendChild(field(label + " (English)", textInput(job, enKey)));
+      row.appendChild(field(label + " (Arabic)", textInput(job, arKey, "rtl"), { ar: true }));
+      form.appendChild(row);
+    });
+
+    // Salary + vacancies
+    const salaryRow = el("div", { class: "field-row triple" });
+    const vacInput = el("input", { type: "number", min: "0", value: job.vacancies || "" });
+    vacInput.addEventListener("input", () => { job.vacancies = vacInput.value ? Number(vacInput.value) : undefined; });
+    salaryRow.appendChild(field("Vacancies", vacInput));
+
+    const minInput = el("input", { type: "number", value: job.salaryMin || "" });
+    minInput.addEventListener("input", () => { job.salaryMin = minInput.value ? Number(minInput.value) : undefined; });
+    salaryRow.appendChild(field("Salary Min", minInput));
+
+    const maxInput = el("input", { type: "number", value: job.salaryMax || "" });
+    maxInput.addEventListener("input", () => { job.salaryMax = maxInput.value ? Number(maxInput.value) : undefined; });
+    salaryRow.appendChild(field("Salary Max", maxInput));
+
+    const curInput = el("input", { type: "text", value: job.currency || "", placeholder: "SAR" });
+    curInput.addEventListener("input", () => { job.currency = curInput.value.toUpperCase(); });
+    salaryRow.appendChild(field("Currency", curInput));
+    form.appendChild(salaryRow);
+
+    const periodRow = el("div", { class: "field-row" });
+    const periodSelect = el("select");
+    ["MONTH", "YEAR", "WEEK", "DAY", "HOUR"].forEach((p) => {
+      const opt = el("option", { value: p, text: p });
+      if ((job.salaryPeriod || "MONTH") === p) opt.setAttribute("selected", "");
+      periodSelect.appendChild(opt);
+    });
+    periodSelect.addEventListener("change", () => { job.salaryPeriod = periodSelect.value; });
+    periodRow.appendChild(field("Salary Period", periodSelect));
+
+    const slugInput = el("input", { type: "text", value: job.slug || "", placeholder: "auto-generated if left blank" });
+    slugInput.addEventListener("input", () => { job.slug = slugInput.value; });
+    periodRow.appendChild(field("URL Slug (optional)", slugInput, { hint: "Leave blank to auto-generate from title + location" }));
+    form.appendChild(periodRow);
+
+    // Detail fields
+    form.appendChild(el("div", { class: "section-title", text: "Job Details" }));
+    DETAIL_FIELDS.forEach(({ key, label }) => {
+      const row = el("div", { class: "field-row" });
+      row.appendChild(field(label + " (English)", textInput(job, key)));
+      row.appendChild(field(label + " (Arabic)", textInput(job, key + "Ar", "rtl"), { ar: true }));
+      form.appendChild(row);
+    });
+
+    // List fields (description, requirements, benefits)
+    LIST_FIELDS.forEach(({ key, label }) => {
+      form.appendChild(el("div", { class: "section-title", text: label }));
+      const row = el("div", { class: "field-row" });
+      row.appendChild(field(label + " (English) - one per line", textarea(job, key)));
+      row.appendChild(field(label + " (Arabic) - one per line, same order", textarea(job, key + "Ar", "rtl"), { ar: true }));
+      form.appendChild(row);
+    });
+
+    // Dates + featured
+    form.appendChild(el("div", { class: "section-title", text: "Publishing" }));
+    const dateRow = el("div", { class: "field-row" });
+    const postedInput = el("input", { type: "date", value: job.postedAt || "" });
+    postedInput.addEventListener("input", () => { job.postedAt = postedInput.value; });
+    dateRow.appendChild(field("Posted Date", postedInput));
+    const validInput = el("input", { type: "date", value: job.validThrough || "" });
+    validInput.addEventListener("input", () => { job.validThrough = validInput.value; });
+    dateRow.appendChild(field("Valid Through", validInput));
+    form.appendChild(dateRow);
+
+    const checkboxRow = el("div", { class: "checkbox-row" });
+    const featuredCheckbox = el("input", { type: "checkbox", id: "featured-" + index });
+    if (job.featured) featuredCheckbox.checked = true;
+    featuredCheckbox.addEventListener("change", () => { job.featured = featuredCheckbox.checked; });
+    checkboxRow.appendChild(featuredCheckbox);
+    checkboxRow.appendChild(el("label", { for: "featured-" + index, text: "Feature this job on the homepage" }));
+    form.appendChild(checkboxRow);
+
+    const footer = el("div", { class: "card-footer" });
+    const delBtn2 = el("button", { class: "btn-danger", type: "button", text: "Delete this job" });
+    delBtn2.addEventListener("click", () => {
+      if (confirm("Delete \"" + (job.title || "this job") + "\"? This cannot be undone.")) {
+        jobs.splice(index, 1);
+        render();
+      }
+    });
+    footer.appendChild(delBtn2);
+    form.appendChild(footer);
+
+    card.appendChild(form);
+
+    // Keep the title/location summary live as the user types, and remember open state
+    card.addEventListener("toggle", () => { job._open = card.open; });
+    form.addEventListener("input", () => {
+      titleLine.firstChild.textContent = job.title || "(untitled job)";
+      subLine.textContent = [job.city, job.country].filter(Boolean).join(", ") || "No location set";
+    });
+
+    return card;
+  }
+
+  function render() {
+    jobListEl.innerHTML = "";
+    emptyStateEl.style.display = jobs.length === 0 ? "block" : "none";
+    jobs.forEach((job, index) => jobListEl.appendChild(renderJobCard(job, index)));
+    jobCountEl.textContent = jobs.length + (jobs.length === 1 ? " job loaded" : " jobs loaded");
+  }
+
+  function nextId() {
+    const nums = jobs.map((j) => parseInt(j.id, 10)).filter((n) => !isNaN(n));
+    return String((nums.length ? Math.max(...nums) : 0) + 1);
+  }
+
+  document.getElementById("addJobBtn").addEventListener("click", () => {
+    jobs.push({
+      id: nextId(),
+      title: "", titleAr: "",
+      country: "", countryAr: "",
+      city: "", cityAr: "",
+      category: "", categoryAr: "",
+      vacancies: undefined,
+      salaryMin: undefined, salaryMax: undefined, currency: "", salaryPeriod: "MONTH",
+      experience: "", experienceAr: "",
+      workingHours: "", workingHoursAr: "",
+      accommodation: "", accommodationAr: "",
+      transportation: "", transportationAr: "",
+      medicalInsurance: "", medicalInsuranceAr: "",
+      contractDuration: "", contractDurationAr: "",
+      description: [], descriptionAr: [],
+      requirements: [], requirementsAr: [],
+      benefits: [], benefitsAr: [],
+      postedAt: "", validThrough: "",
+      featured: false,
+      _open: true,
+    });
+    render();
+    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+  });
+
+  document.getElementById("loadInput").addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const data = JSON.parse(reader.result);
+        if (!Array.isArray(data)) throw new Error("File must contain a JSON array of jobs");
+        jobs = data.map((j) => ({ ...j }));
+        render();
+        toast("Loaded " + jobs.length + " jobs");
+      } catch (err) {
+        alert("Could not read this file: " + err.message);
+      }
+    };
+    reader.readAsText(file);
+    e.target.value = "";
+  });
+
+  function slugify(value) {
+    return String(value)
+      .normalize("NFKD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/&/g, " and ")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  }
+
+  function cleanJob(job) {
+    const out = {};
+    Object.entries(job).forEach(([key, value]) => {
+      if (key === "_open") return;
+      if (key === "id") { out.id = String(value); return; }
+      if (value === undefined || value === null) return;
+      if (typeof value === "string" && value.trim() === "") return;
+      if (Array.isArray(value) && value.length === 0) return;
+      out[key] = value;
+    });
+    if (!out.slug && out.title) {
+      out.slug = slugify([out.title, out.city, out.country].filter(Boolean).join(" "));
+    }
+    return out;
+  }
+
+  document.getElementById("downloadBtn").addEventListener("click", () => {
+    if (jobs.length === 0) {
+      alert("No jobs to download yet - load a file or add a job first.");
+      return;
+    }
+    const missingTitle = jobs.some((j) => !j.title || !j.title.trim());
+    if (missingTitle && !confirm("Some jobs are missing a Title. Download anyway?")) return;
+
+    const output = jobs.map(cleanJob);
+    const blob = new Blob([JSON.stringify(output, null, 2) + "\n"], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "jobs.json";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    toast("Downloaded jobs.json (" + output.length + " jobs)");
+  });
+
+  render();
+</script>
+</body>
+</html>
