@@ -19,6 +19,14 @@ const PERIOD_LABEL = {
   YEAR: "year",
 };
 
+const PERIOD_LABEL_AR = {
+  HOUR: "بالساعة",
+  DAY: "يومياً",
+  WEEK: "أسبوعياً",
+  MONTH: "شهرياً",
+  YEAR: "سنوياً",
+};
+
 function formatSalary(job) {
   const { salaryMin, salaryMax, currency } = job;
   if (!salaryMin && !salaryMax) return "Negotiable";
@@ -31,6 +39,20 @@ function formatSalary(job) {
       : nf.format(salaryMin || salaryMax);
 
   return `${amount} ${currency || ""}`.trim() + ` / ${period}`;
+}
+
+function formatSalaryAr(job) {
+  const { salaryMin, salaryMax, currency } = job;
+  if (!salaryMin && !salaryMax) return "قابل للتفاوض";
+
+  const nf = new Intl.NumberFormat("en-US");
+  const period = PERIOD_LABEL_AR[job.salaryPeriod || "MONTH"];
+  const amount =
+    salaryMin && salaryMax && salaryMin !== salaryMax
+      ? `${nf.format(salaryMin)} - ${nf.format(salaryMax)}`
+      : nf.format(salaryMin || salaryMax);
+
+  return `${amount} ${currency || ""} ${period}`.trim();
 }
 
 function normalise(raw, index, usedSlugs) {
@@ -47,7 +69,9 @@ function normalise(raw, index, usedSlugs) {
   usedSlugs.add(slug);
 
   const salaryLabel = formatSalary(raw);
+  const salaryLabelAr = formatSalaryAr(raw);
   const locationLabel = `${raw.city}, ${raw.country}`;
+  const locationLabelAr = `${raw.cityAr || raw.city}، ${raw.countryAr || raw.country}`;
 
   return {
     ...raw,
@@ -55,11 +79,16 @@ function normalise(raw, index, usedSlugs) {
     slug,
     url: `/jobs/${slug}`,
     salaryLabel,
+    salaryLabelAr,
     locationLabel,
+    locationLabelAr,
     headline: `${raw.title} - ${locationLabel}`,
     benefits: raw.benefits ?? [],
+    benefitsAr: raw.benefitsAr ?? raw.benefits ?? [],
     description: raw.description ?? [],
+    descriptionAr: raw.descriptionAr ?? raw.description ?? [],
     requirements: raw.requirements ?? [],
+    requirementsAr: raw.requirementsAr ?? raw.requirements ?? [],
     salaryPeriod: raw.salaryPeriod ?? "MONTH",
     employmentType: raw.employmentType ?? "FULL_TIME",
   };
@@ -113,4 +142,47 @@ export function getCategories() {
   return Array.from(
     new Set(getAllJobs().map((job) => job.category).filter(Boolean))
   ).sort();
+}
+
+/**
+ * Returns { value, label } pairs for a filter dropdown. `value` is always
+ * the canonical English value stored on each job (used for filtering);
+ * `label` is localized for display.
+ */
+export function getCountryOptions(language) {
+  const jobs = getAllJobs();
+  const seen = new Map();
+  jobs.forEach((job) => {
+    if (!job.country) return;
+    if (!seen.has(job.country)) {
+      seen.set(job.country, language === "ar" ? job.countryAr || job.country : job.country);
+    }
+  });
+  return Array.from(seen.entries())
+    .map(([value, label]) => ({ value, label }))
+    .sort((a, b) => a.value.localeCompare(b.value));
+}
+
+export function getCategoryOptions(language) {
+  const jobs = getAllJobs();
+  const seen = new Map();
+  jobs.forEach((job) => {
+    if (!job.category) return;
+    if (!seen.has(job.category)) {
+      seen.set(job.category, language === "ar" ? job.categoryAr || job.category : job.category);
+    }
+  });
+  return Array.from(seen.entries())
+    .map(([value, label]) => ({ value, label }))
+    .sort((a, b) => a.value.localeCompare(b.value));
+}
+
+/** Reads a single job field in the given language, falling back to English. */
+export function jf(job, field, language) {
+  if (!job) return "";
+  if (language === "ar") {
+    const arField = job[`${field}Ar`];
+    if (arField !== undefined && arField !== null && arField !== "") return arField;
+  }
+  return job[field] ?? "";
 }

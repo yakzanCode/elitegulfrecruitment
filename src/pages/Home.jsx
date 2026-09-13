@@ -4,62 +4,21 @@ import JobCard from "../components/JobCard.jsx";
 import { getAllJobs, getFeaturedJobs } from "../lib/jobs";
 import { gulfCountries, site } from "../lib/site";
 import { quickMessage, whatsappLink } from "../lib/whatsapp";
-
-const services = [
-  {
-    icon: "bi-people",
-    title: "Bulk & Skilled Manpower",
-    text: "Chefs, drivers, welders, electricians, housekeeping, retail and general labour supplied in the numbers your operation needs.",
-  },
-  {
-    icon: "bi-file-earmark-text",
-    title: "Documentation & Visa Processing",
-    text: "Contracts, medical examinations, police clearance, attestation and visa stamping handled end to end by our office.",
-  },
-  {
-    icon: "bi-shield-check",
-    title: "Screening & Trade Testing",
-    text: "Every candidate is interviewed and, where the role requires it, trade tested before we present the profile to you.",
-  },
-  {
-    icon: "bi-airplane",
-    title: "Mobilisation & Travel",
-    text: "Ticketing, pre-departure briefing and arrival coordination so your workers land ready to start.",
-  },
-];
-
-const steps = [
-  {
-    number: "01",
-    title: "You send your requirement",
-    text: "Positions, quantity, salary range and target mobilisation date - by WhatsApp or through the employer form.",
-  },
-  {
-    number: "02",
-    title: "We source and screen",
-    text: "We shortlist from our candidate pool in Morocco and international markets, then interview and trade test.",
-  },
-  {
-    number: "03",
-    title: "You select the candidates",
-    text: "You receive profiles and test results, and confirm the workers you want to hire.",
-  },
-  {
-    number: "04",
-    title: "We handle deployment",
-    text: "Contracts, medicals, visas, tickets and pre-departure briefing until the worker reports to your site.",
-  },
-];
+import { useLanguage } from "../lib/i18n/LanguageContext.jsx";
 
 export default function Home() {
+  const { t, isArabic } = useLanguage();
   const featured = getFeaturedJobs(3);
   const totalJobs = getAllJobs().length;
 
+  const services = t("home.services");
+  const steps = t("home.steps");
+
   const stats = [
-    { value: "6", label: "Gulf markets served" },
-    { value: `${totalJobs}`, label: "Live vacancies" },
-    { value: "20+", label: "Trades & job categories" },
-    { value: "100%", label: "Legal contracts & visas" },
+    { value: "6", label: t("home.stats.marketsServed") },
+    { value: `${totalJobs}`, label: t("home.stats.liveVacancies") },
+    { value: "20+", label: t("home.stats.tradeCategories") },
+    { value: "100%", label: t("home.stats.legalContracts") },
   ];
 
   return (
@@ -69,23 +28,19 @@ export default function Home() {
         <div className="container py-5 py-lg-6">
           <div style={{ maxWidth: 720 }}>
             <p className="eyebrow eyebrow-light mb-3">
-              {site.name} <span className="ar ms-2">نخبة الخليج</span>
+              {t("home.eyebrow")} {!isArabic && <span className="ar ms-2">{site.nameAr}</span>}
             </p>
             <h1 className="display-5 fw-semibold text-white mb-3" style={{ lineHeight: 1.15 }}>
-              Recruitment &amp; Manpower Solutions for the Gulf
+              {t("home.heroTitle")}
             </h1>
             <div className="rule-gold mb-4"></div>
-            <p className="text-white-50 fs-5 mb-4">
-              Elite Gulf Recruitment connects Gulf companies with qualified, work-ready
-              candidates from Morocco and international markets. From a single specialist to
-              a full crew, we handle sourcing, screening, documentation and deployment.
-            </p>
+            <p className="text-white-50 fs-5 mb-4">{t("home.heroParagraph")}</p>
             <div className="d-flex flex-column flex-sm-row gap-3">
               <Link to="/employers" className="btn btn-gold btn-lg px-4">
-                Request Workers
+                {t("home.requestWorkersBtn")}
               </Link>
               <Link to="/jobs" className="btn btn-outline-light-gold btn-lg px-4">
-                View Jobs <i className="bi bi-arrow-right ms-1"></i>
+                {t("home.viewJobsBtn")} <i className="bi bi-arrow-right ms-1"></i>
               </Link>
             </div>
           </div>
@@ -107,15 +62,15 @@ export default function Home() {
       <section className="bg-white border-bottom border-line py-5">
         <div className="container">
           <SectionHeading
-            eyebrow="Where we place workers"
-            title="Serving employers across the Gulf"
-            description="We recruit for hospitality, construction, industrial, logistics, retail and facilities management companies throughout the GCC."
+            eyebrow={t("home.marketsEyebrow")}
+            title={t("home.marketsTitle")}
+            description={t("home.marketsDescription")}
           />
           <div className="row row-cols-2 row-cols-sm-3 row-cols-lg-6 g-0 border border-line mt-4">
             {gulfCountries.map((country) => (
               <div key={country.code} className="col text-center py-4 border border-line">
                 <p className="fw-semibold text-navy mb-1" style={{ fontFamily: "var(--font-serif)" }}>
-                  {country.name}
+                  {isArabic ? country.nameAr : country.name}
                 </p>
                 <p className="ar text-muted-custom small mb-0">{country.nameAr}</p>
               </div>
@@ -128,9 +83,9 @@ export default function Home() {
       <section className="bg-sand py-5">
         <div className="container">
           <SectionHeading
-            eyebrow="For employers"
-            title="A complete recruitment service"
-            description="One agency for the whole process, from your first requirement to the day your workers arrive on site."
+            eyebrow={t("home.servicesEyebrow")}
+            title={t("home.servicesTitle")}
+            description={t("home.servicesDescription")}
           />
           <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4 mt-3">
             {services.map((service) => (
@@ -147,7 +102,7 @@ export default function Home() {
           </div>
           <div className="mt-4">
             <Link to="/employers" className="btn btn-navy">
-              See our employer services <i className="bi bi-arrow-right ms-1"></i>
+              {t("home.seeEmployerServicesBtn")} <i className="bi bi-arrow-right ms-1"></i>
             </Link>
           </div>
         </div>
@@ -157,9 +112,9 @@ export default function Home() {
       <section className="bg-white py-5">
         <div className="container">
           <SectionHeading
-            eyebrow="How it works"
-            title="From requirement to arrival"
-            description="A clear, four-step process with one point of contact throughout."
+            eyebrow={t("home.processEyebrow")}
+            title={t("home.processTitle")}
+            description={t("home.processDescription")}
           />
           <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-0 border border-line mt-4">
             {steps.map((step) => (
@@ -181,12 +136,12 @@ export default function Home() {
           <div className="container">
             <div className="d-flex flex-column flex-sm-row justify-content-between align-items-sm-end gap-3 mb-4">
               <SectionHeading
-                eyebrow="For job seekers"
-                title="Current vacancies"
-                description="Open positions with salary, accommodation, transport and insurance details. Apply in one click on WhatsApp."
+                eyebrow={t("home.featuredEyebrow")}
+                title={t("home.featuredTitle")}
+                description={t("home.featuredDescription")}
               />
               <Link to="/jobs" className="btn btn-outline-navy flex-shrink-0">
-                All jobs <i className="bi bi-arrow-right ms-1"></i>
+                {t("common.allJobs")} <i className="bi bi-arrow-right ms-1"></i>
               </Link>
             </div>
             <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
@@ -205,9 +160,9 @@ export default function Home() {
             <div className="col-lg-7">
               <SectionHeading
                 light
-                eyebrow="Hiring in the Gulf?"
-                title="Tell us what you need and we will start sourcing today"
-                description="Send your requirement on WhatsApp or through our employer form. We reply with candidate profiles, terms and a realistic mobilisation timeline."
+                eyebrow={t("home.ctaEyebrow")}
+                title={t("home.ctaTitle")}
+                description={t("home.ctaDescription")}
               />
             </div>
             <div className="col-lg-5 d-flex flex-column flex-sm-row gap-3 justify-content-lg-end">
@@ -218,11 +173,11 @@ export default function Home() {
                 className="btn btn-whatsapp px-4 py-3"
               >
                 <i className="bi bi-whatsapp me-2"></i>
-                WhatsApp our team
+                {t("common.whatsappOurTeam")}
               </a>
               <Link to="/employers" className="btn btn-gold px-4 py-3">
                 <i className="bi bi-briefcase me-2"></i>
-                Request Workers
+                {t("common.requestWorkers")}
               </Link>
             </div>
           </div>

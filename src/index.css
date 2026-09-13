@@ -240,3 +240,35 @@ a {
 .divider-line > * + * {
   border-top: 1px solid var(--line);
 }
+
+/* ---------------------------------------------------------------- RTL support
+   Bootstrap's default (LTR) build always applies .me-*/.ms-* as physical
+   margin-right/margin-left, regardless of page direction. These overrides
+   flip them when the page is in Arabic/RTL mode so icon spacing looks right. */
+[dir="rtl"] body {
+  font-family: var(--font-arabic);
+}
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4 {
+  font-family: var(--font-arabic);
+}
+
+[dir="rtl"] .me-1 { margin-right: 0 !important; margin-left: 0.25rem !important; }
+[dir="rtl"] .me-2 { margin-right: 0 !important; margin-left: 0.5rem !important; }
+[dir="rtl"] .me-3 { margin-right: 0 !important; margin-left: 1rem !important; }
+[dir="rtl"] .ms-1 { margin-left: 0 !important; margin-right: 0.25rem !important; }
+[dir="rtl"] .ms-2 { margin-left: 0 !important; margin-right: 0.5rem !important; }
+[dir="rtl"] .ms-3 { margin-left: 0 !important; margin-right: 1rem !important; }
+[dir="rtl"] .ms-auto { margin-left: 0 !important; margin-right: auto !important; }
+
+[dir="rtl"] .bi-arrow-right::before {
+  display: inline-block;
+  transform: scaleX(-1);
+}
+
+.accent-start {
+  border-inline-start: 2px solid var(--gold);
+}
+

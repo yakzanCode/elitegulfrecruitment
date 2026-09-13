@@ -5,18 +5,27 @@
     "title": "Pastry Chef / Bakery Chef",
     "titleAr": "شيف حلويات / شيف مخبوزات",
     "country": "Saudi Arabia",
+    "countryAr": "السعودية",
     "city": "Makkah",
+    "cityAr": "مكة المكرمة",
     "category": "Hospitality & Catering",
+    "categoryAr": "الضيافة والتموين",
     "vacancies": 6,
     "salaryMin": 4000,
     "salaryMax": 5000,
     "currency": "SAR",
     "experience": "3+ years as a pastry or bakery chef in a hotel, restaurant or production bakery",
+    "experienceAr": "خبرة 3 سنوات فأكثر كشيف حلويات أو مخبوزات في فندق أو مطعم أو مخبز إنتاجي",
     "workingHours": "8 hours per day, 6 days per week (1 day off), overtime paid separately",
+    "workingHoursAr": "8 ساعات يومياً، 6 أيام أسبوعياً (يوم إجازة واحد)، وتُدفع ساعات العمل الإضافية بشكل منفصل",
     "accommodation": "Provided free of charge by the employer (shared furnished accommodation)",
+    "accommodationAr": "يوفرها صاحب العمل مجاناً (سكن مشترك مفروش)",
     "transportation": "Provided free of charge by the employer (company transport to and from work)",
+    "transportationAr": "يوفرها صاحب العمل مجاناً (نقل من وإلى العمل)",
     "medicalInsurance": "Full medical insurance provided by the employer",
+    "medicalInsuranceAr": "تأمين طبي كامل يوفره صاحب العمل",
     "contractDuration": "2 years, renewable",
+    "contractDurationAr": "عقد لمدة سنتين قابل للتجديد",
     "benefits": [
       "Return air ticket provided by the employer",
       "30 days paid annual leave after completing the contract year",
@@ -24,10 +33,22 @@
       "End of service benefits as per Saudi Labour Law",
       "Free duty meals during working hours"
     ],
+    "benefitsAr": [
+      "تذكرة طيران ذهاب وعودة يوفرها صاحب العمل",
+      "30 يوم إجازة سنوية مدفوعة الأجر بعد إتمام سنة العقد",
+      "الإقامة وتأشيرة العمل على نفقة صاحب العمل",
+      "مكافأة نهاية الخدمة وفق نظام العمل السعودي",
+      "وجبات عمل مجانية خلال ساعات الدوام"
+    ],
     "description": [
       "A well-established bakery and sweets group in Makkah, Saudi Arabia is hiring experienced Pastry and Bakery Chefs to join its production team.",
       "The selected candidates will be responsible for preparing Arabic and international pastries, cakes and daily bakery items, following the company recipes and quality standards.",
       "This is a direct hire position with a full legal work contract, sponsored visa, free accommodation and free transportation."
+    ],
+    "descriptionAr": [
+      "تقوم مجموعة مخابز وحلويات راسخة في مكة المكرمة، المملكة العربية السعودية، بتوظيف شيفات حلويات ومخبوزات ذوي خبرة للانضمام إلى فريق الإنتاج لديها.",
+      "سيكون المرشحون المختارون مسؤولين عن تحضير الحلويات العربية والعالمية والكعك ومنتجات المخبز اليومية وفق وصفات الشركة ومعايير الجودة.",
+      "هذه وظيفة توظيف مباشر بعقد عمل قانوني كامل وتأشيرة مكفولة وسكن مجاني ونقل مجاني."
     ],
     "requirements": [
       "Minimum 3 years of proven experience in pastry or bakery production",
@@ -36,6 +57,14 @@
       "Physically fit and able to work in a fast-paced production kitchen",
       "Valid passport with at least 18 months validity",
       "Age between 22 and 45 years"
+    ],
+    "requirementsAr": [
+      "خبرة لا تقل عن 3 سنوات مثبتة في إنتاج الحلويات أو المخبوزات",
+      "القدرة على تحضير الكيك والكرواسون والحلويات العربية ومنتجات الخبز اليومية",
+      "معرفة جيدة بمعايير النظافة الغذائية والسلامة في المطبخ",
+      "لياقة بدنية جيدة والقدرة على العمل في مطبخ إنتاج سريع الوتيرة",
+      "جواز سفر ساري المفعول لمدة 18 شهراً على الأقل",
+      "العمر بين 22 و45 سنة"
     ],
     "postedAt": "2026-08-28",
     "validThrough": "2026-12-31",
@@ -46,18 +75,27 @@
     "title": "Female Housekeeping Attendant",
     "titleAr": "عاملة تدبير منزلي - فنادق",
     "country": "United Arab Emirates",
+    "countryAr": "الإمارات العربية المتحدة",
     "city": "Dubai",
+    "cityAr": "دبي",
     "category": "Hospitality & Catering",
+    "categoryAr": "الضيافة والتموين",
     "vacancies": 20,
     "salaryMin": 1500,
     "salaryMax": 1800,
     "currency": "AED",
     "experience": "1+ year in hotel or facility housekeeping (hotel experience preferred)",
+    "experienceAr": "سنة خبرة فأكثر في التدبير المنزلي بالفنادق أو المنشآت (يُفضل خبرة فندقية)",
     "workingHours": "8 hours per day, 6 days per week, rotating shifts",
+    "workingHoursAr": "8 ساعات يومياً، 6 أيام أسبوعياً، نظام مناوبات متغير",
     "accommodation": "Provided free of charge by the employer (staff accommodation)",
+    "accommodationAr": "يوفرها صاحب العمل مجاناً (سكن موظفين)",
     "transportation": "Provided free of charge by the employer",
+    "transportationAr": "يوفرها صاحب العمل مجاناً",
     "medicalInsurance": "Full medical insurance provided by the employer",
+    "medicalInsuranceAr": "تأمين طبي كامل يوفره صاحب العمل",
     "contractDuration": "2 years, renewable",
+    "contractDurationAr": "عقد لمدة سنتين قابل للتجديد",
     "benefits": [
       "Return air ticket every 2 years",
       "30 days paid annual leave",
@@ -65,10 +103,22 @@
       "Overtime paid as per UAE Labour Law",
       "Free duty meals"
     ],
+    "benefitsAr": [
+      "تذكرة طيران ذهاب وعودة كل سنتين",
+      "30 يوم إجازة سنوية مدفوعة الأجر",
+      "الزي الموحد وخدمة الغسيل مجاناً",
+      "الساعات الإضافية تُدفع وفق نظام العمل الإماراتي",
+      "وجبات عمل مجانية"
+    ],
     "description": [
       "A leading hospitality group in Dubai is recruiting Female Housekeeping Attendants for its 4 and 5 star properties.",
       "The role covers guest room cleaning, linen handling, public area cleaning and reporting maintenance issues to the supervisor.",
       "Full visa sponsorship, accommodation, transport and medical insurance are provided by the employer."
+    ],
+    "descriptionAr": [
+      "تقوم مجموعة ضيافة رائدة في دبي بتوظيف عاملات تدبير منزلي لفنادقها من فئة 4 و5 نجوم.",
+      "تشمل المهام تنظيف غرف النزلاء والتعامل مع البياضات وتنظيف المناطق العامة وإبلاغ المشرف عن أعمال الصيانة.",
+      "توفر الشركة تأشيرة العمل والسكن والنقل والتأمين الطبي بالكامل."
     ],
     "requirements": [
       "Minimum 1 year of housekeeping experience, hotel background preferred",
@@ -77,6 +127,14 @@
       "Able to work rotating shifts including weekends",
       "Valid passport with at least 18 months validity",
       "Age between 21 and 40 years"
+    ],
+    "requirementsAr": [
+      "خبرة سنة على الأقل في التدبير المنزلي، ويُفضل خلفية فندقية",
+      "مهارات تواصل أساسية باللغة الإنجليزية",
+      "مظهر لائق وانضباط وتوجه نحو خدمة العملاء",
+      "القدرة على العمل بنظام المناوبات المتغيرة بما في ذلك عطلات نهاية الأسبوع",
+      "جواز سفر ساري المفعول لمدة 18 شهراً على الأقل",
+      "العمر بين 21 و40 سنة"
     ],
     "postedAt": "2026-08-26",
     "validThrough": "2026-12-31",
@@ -87,18 +145,27 @@
     "title": "Heavy Duty Driver",
     "titleAr": "سائق شاحنة ثقيلة",
     "country": "Qatar",
+    "countryAr": "قطر",
     "city": "Doha",
+    "cityAr": "الدوحة",
     "category": "Transport & Logistics",
+    "categoryAr": "النقل والخدمات اللوجستية",
     "vacancies": 12,
     "salaryMin": 2200,
     "salaryMax": 2800,
     "currency": "QAR",
     "experience": "3+ years driving heavy vehicles, GCC driving experience is an advantage",
+    "experienceAr": "خبرة 3 سنوات فأكثر في قيادة المركبات الثقيلة، ويُعد وجود خبرة قيادة في دول الخليج ميزة إضافية",
     "workingHours": "8 hours per day, 6 days per week, overtime available and paid",
+    "workingHoursAr": "8 ساعات يومياً، 6 أيام أسبوعياً، وتتوفر ساعات إضافية مدفوعة الأجر",
     "accommodation": "Provided free of charge by the employer",
+    "accommodationAr": "يوفرها صاحب العمل مجاناً",
     "transportation": "Provided free of charge by the employer",
+    "transportationAr": "يوفرها صاحب العمل مجاناً",
     "medicalInsurance": "Full medical insurance provided by the employer",
+    "medicalInsuranceAr": "تأمين طبي كامل يوفره صاحب العمل",
     "contractDuration": "2 years, renewable",
+    "contractDurationAr": "عقد لمدة سنتين قابل للتجديد",
     "benefits": [
       "Return air ticket provided by the employer",
       "Qatar driving licence conversion sponsored by the employer",
@@ -106,10 +173,22 @@
       "Overtime and food allowance",
       "End of service gratuity as per Qatar Labour Law"
     ],
+    "benefitsAr": [
+      "تذكرة طيران ذهاب وعودة يوفرها صاحب العمل",
+      "تحويل رخصة القيادة القطرية على نفقة صاحب العمل",
+      "21 يوم إجازة سنوية مدفوعة الأجر",
+      "بدل ساعات إضافية وبدل طعام",
+      "مكافأة نهاية الخدمة وفق نظام العمل القطري"
+    ],
     "description": [
       "A large contracting and logistics company in Doha, Qatar is hiring Heavy Duty Drivers for site and inter-city transport operations.",
       "Drivers will operate trailers, tippers and heavy trucks, complete daily vehicle checks and deliver materials safely between sites.",
       "The employer sponsors the Qatari heavy licence conversion after arrival."
+    ],
+    "descriptionAr": [
+      "تقوم شركة مقاولات وخدمات لوجستية كبرى في الدوحة، قطر، بتوظيف سائقي شاحنات ثقيلة لعمليات النقل بين المواقع والمدن.",
+      "سيقوم السائقون بتشغيل المقطورات والقلابات والشاحنات الثقيلة، وإجراء الفحوصات اليومية للمركبات، ونقل المواد بأمان بين المواقع.",
+      "يكفل صاحب العمل تحويل الرخصة القطرية للمركبات الثقيلة بعد الوصول."
     ],
     "requirements": [
       "Valid heavy vehicle driving licence in home country",
@@ -118,6 +197,14 @@
       "Basic English or Arabic communication",
       "Medically fit, able to pass the GCC medical examination",
       "Age between 25 and 45 years"
+    ],
+    "requirementsAr": [
+      "رخصة قيادة مركبات ثقيلة سارية المفعول في بلد الإقامة",
+      "خبرة مهنية لا تقل عن 3 سنوات في قيادة المركبات الثقيلة",
+      "سجل قيادة نظيف ومعرفة جيدة بقواعد السلامة المرورية",
+      "تواصل أساسي بالإنجليزية أو العربية",
+      "لياقة صحية جيدة والقدرة على اجتياز الفحص الطبي الخليجي",
+      "العمر بين 25 و45 سنة"
     ],
     "postedAt": "2026-08-24",
     "validThrough": "2026-12-31",
@@ -128,18 +215,27 @@
     "title": "MIG / TIG Welder",
     "titleAr": "لحام - ميغ / تيغ",
     "country": "Saudi Arabia",
+    "countryAr": "السعودية",
     "city": "Jubail",
+    "cityAr": "الجبيل",
     "category": "Construction & Industrial",
+    "categoryAr": "الإنشاءات والصناعة",
     "vacancies": 25,
     "salaryMin": 2500,
     "salaryMax": 3500,
     "currency": "SAR",
     "experience": "4+ years in structural or pipe welding with a valid welding certificate",
+    "experienceAr": "خبرة 4 سنوات فأكثر في لحام الهياكل أو الأنابيب مع شهادة لحام سارية المفعول",
     "workingHours": "10 hours per day, 6 days per week (2 hours paid overtime included)",
+    "workingHoursAr": "10 ساعات يومياً، 6 أيام أسبوعياً (تشمل ساعتين إضافيتين مدفوعتين)",
     "accommodation": "Provided free of charge by the employer (camp accommodation)",
+    "accommodationAr": "يوفرها صاحب العمل مجاناً (سكن في المخيم)",
     "transportation": "Provided free of charge by the employer",
+    "transportationAr": "يوفرها صاحب العمل مجاناً",
     "medicalInsurance": "Full medical insurance provided by the employer",
+    "medicalInsuranceAr": "تأمين طبي كامل يوفره صاحب العمل",
     "contractDuration": "2 years, renewable",
+    "contractDurationAr": "عقد لمدة سنتين قابل للتجديد",
     "benefits": [
       "Return air ticket provided by the employer",
       "Food allowance paid monthly",
@@ -147,10 +243,22 @@
       "Trade test allowance for successful candidates",
       "End of service benefits as per Saudi Labour Law"
     ],
+    "benefitsAr": [
+      "تذكرة طيران ذهاب وعودة يوفرها صاحب العمل",
+      "بدل طعام يُدفع شهرياً",
+      "الإقامة وتصريح العمل مكفولان بالكامل",
+      "بدل اختبار المهارة للمرشحين الناجحين",
+      "مكافأة نهاية الخدمة وفق نظام العمل السعودي"
+    ],
     "description": [
       "A major industrial contractor in Jubail Industrial City is recruiting certified MIG and TIG Welders for refinery and petrochemical projects.",
       "Selected welders will work on carbon steel and stainless steel piping and structures under the supervision of the QC department.",
       "Candidates must pass a practical trade test before mobilisation."
+    ],
+    "descriptionAr": [
+      "يقوم مقاول صناعي كبير في مدينة الجبيل الصناعية بتوظيف لحامي ميغ وتيغ معتمدين لمشاريع المصافي والبتروكيماويات.",
+      "سيعمل اللحامون المختارون على أنابيب وهياكل الفولاذ الكربوني والفولاذ المقاوم للصدأ تحت إشراف قسم مراقبة الجودة.",
+      "يجب على المرشحين اجتياز اختبار مهارة عملي قبل الترحيل."
     ],
     "requirements": [
       "Minimum 4 years of welding experience on industrial projects",
@@ -159,6 +267,14 @@
       "Committed to strict site safety procedures",
       "Valid passport with at least 18 months validity",
       "Age between 23 and 45 years"
+    ],
+    "requirementsAr": [
+      "خبرة لا تقل عن 4 سنوات في اللحام على المشاريع الصناعية",
+      "شهادة لحام سارية المفعول (تُعد شهادة اختبار 6G ميزة قوية)",
+      "القدرة على قراءة الرسومات الآيزومترية الأساسية ورموز اللحام",
+      "الالتزام بإجراءات السلامة الصارمة في الموقع",
+      "جواز سفر ساري المفعول لمدة 18 شهراً على الأقل",
+      "العمر بين 23 و45 سنة"
     ],
     "postedAt": "2026-08-20",
     "validThrough": "2026-12-31",
@@ -169,18 +285,27 @@
     "title": "Restaurant Waiter / Waitress",
     "titleAr": "نادل / نادلة مطعم",
     "country": "Kuwait",
+    "countryAr": "الكويت",
     "city": "Kuwait City",
+    "cityAr": "مدينة الكويت",
     "category": "Hospitality & Catering",
+    "categoryAr": "الضيافة والتموين",
     "vacancies": 15,
     "salaryMin": 130,
     "salaryMax": 170,
     "currency": "KWD",
     "experience": "2+ years in restaurant or cafe service",
+    "experienceAr": "خبرة سنتين فأكثر في خدمة المطاعم أو المقاهي",
     "workingHours": "9 hours per day, 6 days per week, split shifts",
+    "workingHoursAr": "9 ساعات يومياً، 6 أيام أسبوعياً، مناوبات مقسمة",
     "accommodation": "Provided free of charge by the employer",
+    "accommodationAr": "يوفرها صاحب العمل مجاناً",
     "transportation": "Provided free of charge by the employer",
+    "transportationAr": "يوفرها صاحب العمل مجاناً",
     "medicalInsurance": "Full medical insurance provided by the employer",
+    "medicalInsuranceAr": "تأمين طبي كامل يوفره صاحب العمل",
     "contractDuration": "2 years, renewable",
+    "contractDurationAr": "عقد لمدة سنتين قابل للتجديد",
     "benefits": [
       "Return air ticket provided by the employer",
       "Service charge and tips shared monthly",
@@ -188,10 +313,22 @@
       "Uniform provided",
       "Free duty meals"
     ],
+    "benefitsAr": [
+      "تذكرة طيران ذهاب وعودة يوفرها صاحب العمل",
+      "رسوم الخدمة والإكراميات تُقتسم شهرياً",
+      "30 يوم إجازة سنوية مدفوعة الأجر",
+      "الزي الموحد مجاناً",
+      "وجبات عمل مجانية"
+    ],
     "description": [
       "A growing restaurant group in Kuwait City is hiring Waiters and Waitresses for its casual dining and fine dining outlets.",
       "The role covers greeting guests, taking orders on the POS system, serving food and beverages, and maintaining the service area.",
       "Full visa sponsorship, accommodation and transport are provided by the employer."
+    ],
+    "descriptionAr": [
+      "تقوم مجموعة مطاعم متنامية في مدينة الكويت بتوظيف نادلين ونادلات لفروعها في تصنيف المطاعم العادية والراقية.",
+      "تشمل المهام استقبال النزلاء وأخذ الطلبات عبر نظام نقاط البيع وتقديم الطعام والمشروبات والحفاظ على منطقة الخدمة.",
+      "توفر الشركة تأشيرة العمل والسكن والنقل بالكامل."
     ],
     "requirements": [
       "Minimum 2 years of restaurant service experience",
@@ -200,6 +337,14 @@
       "Able to work split shifts and weekends",
       "Valid passport with at least 18 months validity",
       "Age between 21 and 38 years"
+    ],
+    "requirementsAr": [
+      "خبرة سنتين على الأقل في خدمة المطاعم",
+      "إجادة التحدث بالإنجليزية، ويُعد إتقان العربية أو الفرنسية ميزة إضافية",
+      "مظهر لائق وروح خدمة عملاء عالية",
+      "القدرة على العمل بنظام المناوبات المقسمة وعطلات نهاية الأسبوع",
+      "جواز سفر ساري المفعول لمدة 18 شهراً على الأقل",
+      "العمر بين 21 و38 سنة"
     ],
     "postedAt": "2026-08-18",
     "validThrough": "2026-12-31",
@@ -210,18 +355,27 @@
     "title": "Electrician - Building Maintenance",
     "titleAr": "كهربائي صيانة مباني",
     "country": "United Arab Emirates",
+    "countryAr": "الإمارات العربية المتحدة",
     "city": "Abu Dhabi",
+    "cityAr": "أبوظبي",
     "category": "Construction & Industrial",
+    "categoryAr": "الإنشاءات والصناعة",
     "vacancies": 10,
     "salaryMin": 1800,
     "salaryMax": 2400,
     "currency": "AED",
     "experience": "3+ years in building or facility maintenance electrical works",
+    "experienceAr": "خبرة 3 سنوات فأكثر في الأعمال الكهربائية لصيانة المباني أو المرافق",
     "workingHours": "9 hours per day, 6 days per week, overtime paid",
+    "workingHoursAr": "9 ساعات يومياً، 6 أيام أسبوعياً، وتُدفع الساعات الإضافية",
     "accommodation": "Provided free of charge by the employer",
+    "accommodationAr": "يوفرها صاحب العمل مجاناً",
     "transportation": "Provided free of charge by the employer",
+    "transportationAr": "يوفرها صاحب العمل مجاناً",
     "medicalInsurance": "Full medical insurance provided by the employer",
+    "medicalInsuranceAr": "تأمين طبي كامل يوفره صاحب العمل",
     "contractDuration": "2 years, renewable",
+    "contractDurationAr": "عقد لمدة سنتين قابل للتجديد",
     "benefits": [
       "Return air ticket every 2 years",
       "Overtime paid as per UAE Labour Law",
@@ -229,10 +383,22 @@
       "Tools and PPE provided by the employer",
       "End of service gratuity"
     ],
+    "benefitsAr": [
+      "تذكرة طيران ذهاب وعودة كل سنتين",
+      "الساعات الإضافية تُدفع وفق نظام العمل الإماراتي",
+      "30 يوم إجازة سنوية مدفوعة الأجر",
+      "الأدوات ومعدات الحماية الشخصية يوفرها صاحب العمل",
+      "مكافأة نهاية الخدمة"
+    ],
     "description": [
       "A facility management company in Abu Dhabi is recruiting Maintenance Electricians for residential towers and commercial buildings.",
       "Work includes preventive and corrective maintenance of distribution boards, lighting circuits, pumps and small power systems.",
       "The employer provides visa, accommodation, transport and medical insurance."
+    ],
+    "descriptionAr": [
+      "تقوم شركة إدارة مرافق في أبوظبي بتوظيف كهربائيي صيانة للأبراج السكنية والمباني التجارية.",
+      "يشمل العمل الصيانة الوقائية والعلاجية للوحات التوزيع ودوائر الإضاءة والمضخات وأنظمة الطاقة الصغيرة.",
+      "يوفر صاحب العمل التأشيرة والسكن والنقل والتأمين الطبي."
     ],
     "requirements": [
       "Diploma or vocational certificate in electrical works",
@@ -241,6 +407,14 @@
       "Basic English communication",
       "Valid passport with at least 18 months validity",
       "Age between 24 and 45 years"
+    ],
+    "requirementsAr": [
+      "دبلوم أو شهادة مهنية في الأعمال الكهربائية",
+      "خبرة لا تقل عن 3 سنوات في صيانة المباني أو المرافق",
+      "القدرة على قراءة المخططات أحادية الخط واستخدام أجهزة الفحص",
+      "تواصل أساسي باللغة الإنجليزية",
+      "جواز سفر ساري المفعول لمدة 18 شهراً على الأقل",
+      "العمر بين 24 و45 سنة"
     ],
     "postedAt": "2026-08-15",
     "validThrough": "2026-12-31",
@@ -251,18 +425,27 @@
     "title": "Female Sales Assistant - Retail",
     "titleAr": "مندوبة مبيعات - تجزئة",
     "country": "Bahrain",
+    "countryAr": "البحرين",
     "city": "Manama",
+    "cityAr": "المنامة",
     "category": "Retail & Sales",
+    "categoryAr": "التجزئة والمبيعات",
     "vacancies": 8,
     "salaryMin": 180,
     "salaryMax": 230,
     "currency": "BHD",
     "experience": "1+ year in retail, fashion or cosmetics sales",
+    "experienceAr": "سنة خبرة فأكثر في مبيعات التجزئة أو الأزياء أو مستحضرات التجميل",
     "workingHours": "8 hours per day, 6 days per week, mall shift timings",
+    "workingHoursAr": "8 ساعات يومياً، 6 أيام أسبوعياً، حسب مواعيد دوام المجمعات التجارية",
     "accommodation": "Provided free of charge by the employer",
+    "accommodationAr": "يوفرها صاحب العمل مجاناً",
     "transportation": "Provided free of charge by the employer",
+    "transportationAr": "يوفرها صاحب العمل مجاناً",
     "medicalInsurance": "Full medical insurance provided by the employer",
+    "medicalInsuranceAr": "تأمين طبي كامل يوفره صاحب العمل",
     "contractDuration": "2 years, renewable",
+    "contractDurationAr": "عقد لمدة سنتين قابل للتجديد",
     "benefits": [
       "Return air ticket provided by the employer",
       "Monthly sales incentive on top of the basic salary",
@@ -270,10 +453,22 @@
       "Uniform provided",
       "Staff discount on company products"
     ],
+    "benefitsAr": [
+      "تذكرة طيران ذهاب وعودة يوفرها صاحب العمل",
+      "حافز مبيعات شهري إضافة إلى الراتب الأساسي",
+      "30 يوم إجازة سنوية مدفوعة الأجر",
+      "الزي الموحد مجاناً",
+      "خصم للموظفين على منتجات الشركة"
+    ],
     "description": [
       "A retail group operating fashion and cosmetics stores in Bahrain is hiring Female Sales Assistants for its mall locations.",
       "The role covers customer service, product presentation, cashiering and daily stock replenishment.",
       "Visa, accommodation, transport and medical insurance are provided by the employer."
+    ],
+    "descriptionAr": [
+      "تقوم مجموعة تجزئة تدير متاجر أزياء ومستحضرات تجميل في البحرين بتوظيف مندوبات مبيعات لفروعها في المجمعات التجارية.",
+      "تشمل المهام خدمة العملاء وعرض المنتجات وأعمال الصندوق وتجديد المخزون اليومي.",
+      "توفر الشركة التأشيرة والسكن والنقل والتأمين الطبي."
     ],
     "requirements": [
       "Minimum 1 year of retail sales experience",
@@ -282,6 +477,14 @@
       "Able to work mall shift hours including weekends",
       "Valid passport with at least 18 months validity",
       "Age between 20 and 35 years"
+    ],
+    "requirementsAr": [
+      "خبرة سنة على الأقل في مبيعات التجزئة",
+      "إجادة التحدث بالإنجليزية، ويُعد إتقان الفرنسية أو العربية ميزة إضافية",
+      "مظهر لائق وثقة في التعامل مع العملاء",
+      "القدرة على العمل بمواعيد دوام المجمعات التجارية بما في ذلك عطلات نهاية الأسبوع",
+      "جواز سفر ساري المفعول لمدة 18 شهراً على الأقل",
+      "العمر بين 20 و35 سنة"
     ],
     "postedAt": "2026-08-12",
     "validThrough": "2026-12-31",
@@ -292,18 +495,27 @@
     "title": "Cleaning Supervisor",
     "titleAr": "مشرف نظافة",
     "country": "Oman",
+    "countryAr": "عُمان",
     "city": "Muscat",
+    "cityAr": "مسقط",
     "category": "Facilities & Cleaning",
+    "categoryAr": "المرافق والنظافة",
     "vacancies": 5,
     "salaryMin": 220,
     "salaryMax": 280,
     "currency": "OMR",
     "experience": "3+ years in cleaning operations with at least 1 year as a supervisor",
+    "experienceAr": "خبرة 3 سنوات فأكثر في عمليات النظافة، منها سنة واحدة على الأقل كمشرف",
     "workingHours": "9 hours per day, 6 days per week",
+    "workingHoursAr": "9 ساعات يومياً، 6 أيام أسبوعياً",
     "accommodation": "Provided free of charge by the employer",
+    "accommodationAr": "يوفرها صاحب العمل مجاناً",
     "transportation": "Provided free of charge by the employer",
+    "transportationAr": "يوفرها صاحب العمل مجاناً",
     "medicalInsurance": "Full medical insurance provided by the employer",
+    "medicalInsuranceAr": "تأمين طبي كامل يوفره صاحب العمل",
     "contractDuration": "2 years, renewable",
+    "contractDurationAr": "عقد لمدة سنتين قابل للتجديد",
     "benefits": [
       "Return air ticket provided by the employer",
       "Mobile allowance",
@@ -311,10 +523,22 @@
       "Uniform and PPE provided",
       "End of service benefits as per Oman Labour Law"
     ],
+    "benefitsAr": [
+      "تذكرة طيران ذهاب وعودة يوفرها صاحب العمل",
+      "بدل هاتف",
+      "30 يوم إجازة سنوية مدفوعة الأجر",
+      "الزي الموحد ومعدات الحماية الشخصية مجاناً",
+      "مكافأة نهاية الخدمة وفق نظام العمل العُماني"
+    ],
     "description": [
       "A national facilities management company in Muscat is hiring Cleaning Supervisors to lead cleaning teams on commercial and government sites.",
       "Responsibilities include staff scheduling, quality inspections, consumable stock control and client reporting.",
       "Full visa sponsorship, accommodation and transport are provided."
+    ],
+    "descriptionAr": [
+      "تقوم شركة وطنية لإدارة المرافق في مسقط بتوظيف مشرفي نظافة لقيادة فرق النظافة في المواقع التجارية والحكومية.",
+      "تشمل المسؤوليات جدولة الموظفين وعمليات التفتيش على الجودة ومراقبة مخزون المواد الاستهلاكية وإعداد التقارير للعملاء.",
+      "تُوفَّر تأشيرة العمل والسكن والنقل بالكامل."
     ],
     "requirements": [
       "Minimum 3 years of cleaning operations experience, 1 year supervisory",
@@ -323,6 +547,14 @@
       "Knowledge of cleaning chemicals and safety data sheets",
       "Valid passport with at least 18 months validity",
       "Age between 26 and 45 years"
+    ],
+    "requirementsAr": [
+      "خبرة لا تقل عن 3 سنوات في عمليات النظافة، منها سنة إشرافية",
+      "القدرة على إدارة فريق من 10 إلى 25 عاملاً",
+      "إجادة القراءة والكتابة بالإنجليزية لإعداد التقارير اليومية",
+      "معرفة بالمواد الكيميائية للتنظيف وبطاقات بيانات السلامة",
+      "جواز سفر ساري المفعول لمدة 18 شهراً على الأقل",
+      "العمر بين 26 و45 سنة"
     ],
     "postedAt": "2026-08-10",
     "validThrough": "2026-12-31",

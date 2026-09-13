@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { gulfCountries, mainNav, site } from "../lib/site";
+import { useLanguage } from "../lib/i18n/LanguageContext.jsx";
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const { t, isArabic } = useLanguage();
 
   return (
     <footer className="navy-panel pt-5 pb-4 mt-auto">
@@ -27,12 +29,12 @@ export default function Footer() {
           </div>
 
           <div className="col-6 col-lg-2">
-            <h6 className="text-white mb-3">Navigate</h6>
+            <h6 className="text-white mb-3">{t("footer.navigate")}</h6>
             <ul className="list-unstyled">
               {mainNav.map((item) => (
                 <li key={item.href} className="mb-2">
                   <Link to={item.href} className="text-white-50 small text-decoration-none">
-                    {item.label}
+                    {t(`nav.${item.key}`)}
                   </Link>
                 </li>
               ))}
@@ -40,18 +42,18 @@ export default function Footer() {
           </div>
 
           <div className="col-6 col-lg-3">
-            <h6 className="text-white mb-3">Markets we serve</h6>
+            <h6 className="text-white mb-3">{t("footer.marketsWeServe")}</h6>
             <ul className="list-unstyled">
               {gulfCountries.map((c) => (
                 <li key={c.code} className="text-white-50 small mb-1">
-                  {c.name}
+                  {isArabic ? c.nameAr : c.name}
                 </li>
               ))}
             </ul>
           </div>
 
           <div className="col-lg-3">
-            <h6 className="text-white mb-3">Contact</h6>
+            <h6 className="text-white mb-3">{t("footer.contact")}</h6>
             <p className="text-white-50 small mb-2">{site.address.full}</p>
             <p className="text-white-50 small mb-2">
               <a href={`mailto:${site.email}`} className="text-white-50 text-decoration-none">
@@ -70,11 +72,9 @@ export default function Footer() {
 
         <div className="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2">
           <p className="text-white-50 small mb-0">
-            &copy; {year} {site.legalName}. All rights reserved.
+            &copy; {year} {site.legalName}. {t("footer.rights")}
           </p>
-          <p className="text-white-50 small mb-0">
-            No fees are ever charged to candidates for job placement.
-          </p>
+          <p className="text-white-50 small mb-0">{t("footer.noFees")}</p>
         </div>
       </div>
     </footer>

@@ -1,21 +1,23 @@
 import { useState } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
-import { getJobBySlug, getRelatedJobs } from "../lib/jobs";
+import { getJobBySlug, getRelatedJobs, jf } from "../lib/jobs";
 import { buildApplicationMessage, openWhatsApp, whatsappLink } from "../lib/whatsapp";
 import JobCard from "../components/JobCard.jsx";
+import { useLanguage } from "../lib/i18n/LanguageContext.jsx";
 
 const DETAIL_ROWS = [
-  ["experience", "Experience Required"],
-  ["workingHours", "Working Hours"],
-  ["accommodation", "Accommodation"],
-  ["transportation", "Transportation"],
-  ["medicalInsurance", "Medical Insurance"],
-  ["contractDuration", "Contract Duration"],
+  ["experience", "experience"],
+  ["workingHours", "workingHours"],
+  ["accommodation", "accommodation"],
+  ["transportation", "transportation"],
+  ["medicalInsurance", "medicalInsurance"],
+  ["contractDuration", "contractDuration"],
 ];
 
 export default function JobDetail() {
   const { slug } = useParams();
   const job = getJobBySlug(slug);
+  const { t, language, isArabic } = useLanguage();
 
   const [values, setValues] = useState({
     fullName: "",
@@ -44,25 +46,28 @@ export default function JobDetail() {
     openWhatsApp(whatsappLink(message));
   }
 
+  const description = jf(job, "description", language);
+  const benefits = jf(job, "benefits", language);
+  const requirements = jf(job, "requirements", language);
+
   return (
     <>
       <section className="navy-panel">
         <div className="container py-5">
           <nav className="small text-white-50 mb-3">
-            <Link to="/" className="text-white-50 text-decoration-none">Home</Link>
+            <Link to="/" className="text-white-50 text-decoration-none">{t("common.home")}</Link>
             <span className="mx-2">/</span>
-            <Link to="/jobs" className="text-white-50 text-decoration-none">Jobs</Link>
+            <Link to="/jobs" className="text-white-50 text-decoration-none">{t("jobDetail.breadcrumbJobs")}</Link>
             <span className="mx-2">/</span>
-            <span>{job.title}</span>
+            <span>{jf(job, "title", language)}</span>
           </nav>
-          <p className="eyebrow eyebrow-light mb-2">{job.category || "Vacancy"}</p>
-          <h1 className="text-white display-6 mb-2">{job.title}</h1>
-          {job.titleAr && <p className="ar text-gold mb-3">{job.titleAr}</p>}
+          <p className="eyebrow eyebrow-light mb-2">{jf(job, "category", language) || t("common.vacancy")}</p>
+          <h1 className="text-white display-6 mb-2">{jf(job, "title", language)}</h1>
           <p className="text-white-50 mb-0">
             <i className="bi bi-geo-alt me-2"></i>
-            {job.locationLabel}
+            {isArabic ? job.locationLabelAr : job.locationLabel}
           </p>
-          <p className="fs-4 fw-semibold text-gold mt-2">{job.salaryLabel}</p>
+          <p className="fs-4 fw-semibold text-gold mt-2">{isArabic ? job.salaryLabelAr : job.salaryLabel}</p>
         </div>
       </section>
 
@@ -70,37 +75,37 @@ export default function JobDetail() {
         <div className="container">
           <div className="row g-5">
             <div className="col-lg-7">
-              {job.description?.length > 0 && (
+              {description?.length > 0 && (
                 <div className="mb-5">
-                  <h2 style={{ fontSize: "1.4rem" }}>About the role</h2>
+                  <h2 style={{ fontSize: "1.4rem" }}>{t("jobDetail.aboutRole")}</h2>
                   <div className="rule-gold my-3"></div>
-                  {job.description.map((p, i) => (
+                  {description.map((p, i) => (
                     <p key={i} className="text-muted-custom">{p}</p>
                   ))}
                 </div>
               )}
 
               <div className="mb-5">
-                <h2 style={{ fontSize: "1.4rem" }}>Job details</h2>
+                <h2 style={{ fontSize: "1.4rem" }}>{t("jobDetail.jobDetailsTitle")}</h2>
                 <div className="rule-gold my-3"></div>
                 <div className="row row-cols-1 row-cols-sm-2 g-0 border border-line">
-                  {DETAIL_ROWS.filter(([key]) => job[key]).map(([key, label]) => (
+                  {DETAIL_ROWS.filter(([key]) => job[key]).map(([key, labelKey]) => (
                     <div className="col border border-line p-3" key={key}>
                       <p className="small text-uppercase text-muted-custom mb-1" style={{ letterSpacing: "0.06em", fontSize: "0.72rem" }}>
-                        {label}
+                        {t(`jobDetail.detailLabels.${labelKey}`)}
                       </p>
-                      <p className="mb-0 fw-medium text-navy">{job[key]}</p>
+                      <p className="mb-0 fw-medium text-navy">{jf(job, key, language)}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {job.benefits?.length > 0 && (
+              {benefits?.length > 0 && (
                 <div className="mb-5">
-                  <h2 style={{ fontSize: "1.4rem" }}>Benefits</h2>
+                  <h2 style={{ fontSize: "1.4rem" }}>{t("jobDetail.benefitsTitle")}</h2>
                   <div className="rule-gold my-3"></div>
                   <ul className="list-unstyled">
-                    {job.benefits.map((b, i) => (
+                    {benefits.map((b, i) => (
                       <li key={i} className="d-flex gap-2 mb-2">
                         <i className="bi bi-check2 text-gold-dark mt-1"></i>
                         <span>{b}</span>
@@ -110,12 +115,12 @@ export default function JobDetail() {
                 </div>
               )}
 
-              {job.requirements?.length > 0 && (
+              {requirements?.length > 0 && (
                 <div className="mb-5">
-                  <h2 style={{ fontSize: "1.4rem" }}>Requirements</h2>
+                  <h2 style={{ fontSize: "1.4rem" }}>{t("jobDetail.requirementsTitle")}</h2>
                   <div className="rule-gold my-3"></div>
                   <ul className="list-unstyled">
-                    {job.requirements.map((r, i) => (
+                    {requirements.map((r, i) => (
                       <li key={i} className="d-flex gap-2 mb-2">
                         <i className="bi bi-check2 text-gold-dark mt-1"></i>
                         <span>{r}</span>
@@ -129,46 +134,44 @@ export default function JobDetail() {
             {/* Apply form */}
             <div className="col-lg-5">
               <div className="border border-line bg-sand p-4 p-lg-5" style={{ position: "sticky", top: 96 }}>
-                <h2 style={{ fontSize: "1.3rem" }}>Apply for this job</h2>
-                <p className="text-muted-custom small mb-4">
-                  Fill this in and WhatsApp opens with your application already written.
-                </p>
+                <h2 style={{ fontSize: "1.3rem" }}>{t("jobDetail.applyTitle")}</h2>
+                <p className="text-muted-custom small mb-4">{t("jobDetail.applySubtitle")}</p>
                 <form onSubmit={handleSubmit}>
                   <div className="mb-3">
-                    <label className="field-label">Full Name *</label>
+                    <label className="field-label">{t("jobDetail.form.fullName")} *</label>
                     <input required name="fullName" className="form-control" value={values.fullName} onChange={handleChange} />
                   </div>
                   <div className="mb-3">
-                    <label className="field-label">WhatsApp Number *</label>
+                    <label className="field-label">{t("jobDetail.form.whatsappNumber")} *</label>
                     <input required name="phone" className="form-control" value={values.phone} onChange={handleChange} />
                   </div>
                   <div className="mb-3">
-                    <label className="field-label">Email</label>
+                    <label className="field-label">{t("jobDetail.form.email")}</label>
                     <input type="email" name="email" className="form-control" value={values.email} onChange={handleChange} />
                   </div>
                   <div className="mb-3">
-                    <label className="field-label">Nationality *</label>
+                    <label className="field-label">{t("jobDetail.form.nationality")} *</label>
                     <input required name="nationality" className="form-control" value={values.nationality} onChange={handleChange} />
                   </div>
                   <div className="mb-3">
-                    <label className="field-label">Age</label>
+                    <label className="field-label">{t("jobDetail.form.age")}</label>
                     <input name="age" className="form-control" value={values.age} onChange={handleChange} />
                   </div>
                   <div className="mb-3">
-                    <label className="field-label">Relevant Experience *</label>
+                    <label className="field-label">{t("jobDetail.form.experience")} *</label>
                     <input required name="experience" className="form-control" value={values.experience} onChange={handleChange} />
                   </div>
                   <div className="mb-3">
-                    <label className="field-label">Current Location</label>
+                    <label className="field-label">{t("jobDetail.form.location")}</label>
                     <input name="location" className="form-control" value={values.location} onChange={handleChange} />
                   </div>
                   <div className="mb-4">
-                    <label className="field-label">Message</label>
+                    <label className="field-label">{t("jobDetail.form.message")}</label>
                     <textarea name="message" rows="3" className="form-control" value={values.message} onChange={handleChange}></textarea>
                   </div>
                   <button type="submit" className="btn btn-whatsapp w-100 py-3">
                     <i className="bi bi-whatsapp me-2"></i>
-                    Apply on WhatsApp
+                    {t("jobDetail.applyBtn")}
                   </button>
                 </form>
               </div>
@@ -177,7 +180,7 @@ export default function JobDetail() {
 
           {related.length > 0 && (
             <div className="mt-5 pt-5 border-top border-line">
-              <h2 style={{ fontSize: "1.4rem" }}>Related vacancies</h2>
+              <h2 style={{ fontSize: "1.4rem" }}>{t("jobDetail.relatedTitle")}</h2>
               <div className="rule-gold my-3"></div>
               <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
                 {related.map((r) => (

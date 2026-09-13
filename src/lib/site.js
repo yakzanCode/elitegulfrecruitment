@@ -41,9 +41,9 @@ export const gulfCountries = [
 ];
 
 export const mainNav = [
-  { href: "/", label: "Home" },
-  { href: "/jobs", label: "Jobs" },
-  { href: "/employers", label: "For Employers" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  { href: "/", key: "home" },
+  { href: "/jobs", key: "jobs" },
+  { href: "/employers", key: "employers" },
+  { href: "/about", key: "about" },
+  { href: "/contact", key: "contact" },
 ];
